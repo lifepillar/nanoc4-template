@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+unless defined? LOADED_COMPASS_CONFIG
+  LOADED_COMPASS_CONFIG = true
+  require 'compass'
+  Compass.add_project_configuration 'compass/config.rb'
+end
+sass_options = Compass.sass_engine_options
+
 # A few helpful tips about the Rules file:
 #
 # * The string given to #compile and #route are matching patterns for
@@ -12,6 +19,14 @@
 #   “content/about.html”). To select all children, grandchildren, … of an
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
+
+compile '/assets/stylesheets/*' do
+  filter :sass, Compass.sass_engine_options
+end
+
+route '/assets/stylesheets/*/' do
+  item.identifier.sub('scss','css').chop + '.css'
+end
 
 compile '/stylesheet/' do
   # don’t filter or layout

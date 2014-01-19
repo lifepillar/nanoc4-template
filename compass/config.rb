@@ -1,24 +1,27 @@
 # Require any additional compass plugins here.
+add_import_path "bower_components/foundation/scss"
 
-# Set this to the root of your project when deployed:
-http_path = "/"
-css_dir = "stylesheets"
-sass_dir = "sass"
-images_dir = "images"
-javascripts_dir = "javascripts"
+http_path            = "/"
+project_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+css_dir              = "public/assets/stylesheets"  # compiled files
+sass_dir             = "content/assets/stylesheets" # source files
+fonts_dir            = "content/assets/fonts"
+images_dir           = "content/assets/images"
+javascripts_dir      = "content/assets/javascripts"
+#http_javascripts_dir = "javascripts"
+#http_stylesheets_dir = "stylesheets"
+#http_images_dir      = "images"
+#http_fonts_dir       = "fonts"
 
-# You can select your preferred output style here (can be overridden via the command line):
-# output_style = :expanded or :nested or :compact or :compressed
+# when using SCSS:
+sass_options = {
+  :syntax => :scss
+}
+
+output_style = :expanded # :expanded or :nested or :compact or :compressed
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
 
 # To disable debugging comments that display the original location of your selectors. Uncomment:
 # line_comments = false
-
-
-# If you prefer the indented syntax, you might want to regenerate this
-# project again passing --syntax sass, or you can uncomment this:
-# preferred_syntax = :sass
-# and then run:
-# sass-convert -R --from scss --to sass sass scss && rm -rf sass && mv scss sass
