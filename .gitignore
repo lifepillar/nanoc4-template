@@ -4,3 +4,4 @@
 .ruby-version
 Gemfile.lock
 /public
+/tmp
