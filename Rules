@@ -30,6 +30,14 @@ route '/assets/javascripts/*' do
   '/javascripts/' + File.basename(item.identifier) + '.js'
 end
 
+# Static
+ignore '/font-awesome/scss/*'
+compile '/font-awesomefonts/*' do
+end
+route '/font-awesome/fonts/*' do
+  '/fonts/' + File.basename(item.identifier)
+end
+
 compile '*' do
   if item.binary?
     # don’t filter binary items

@@ -1,5 +1,6 @@
 # Require any additional compass plugins here.
 add_import_path "bower_components/foundation/scss"
+add_import_path "static/font-awesome/scss"
 
 http_path            = "/"
 project_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
