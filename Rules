@@ -17,12 +17,17 @@ compile '/assets/stylesheets/*' do
   filter :sass, Compass.sass_engine_options
 end
 
-route '/assets/stylesheets/*/' do
-  item.identifier.sub('scss','css').chop + '.css'
+route '/assets/stylesheets/*' do
+  '/css/' + File.basename(item.identifier) + '.css'
 end
 
-compile '/stylesheet/' do
-  # don’t filter or layout
+compile '/assets/javascripts/*' do
+  filter :concat_js
+  filter :uglify_js if ENV['NANOC_ENV'] == 'production'
+end
+
+route '/assets/javascripts/*' do
+  '/javascripts/' + File.basename(item.identifier) + '.js'
 end
 
 compile '*' do
@@ -32,10 +37,6 @@ compile '*' do
     filter :erb
     layout 'default'
   end
-end
-
-route '/stylesheet/' do
-  '/style.css'
 end
 
 route '*' do
