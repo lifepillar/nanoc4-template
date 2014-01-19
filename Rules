@@ -1,12 +1,5 @@
 #!/usr/bin/env ruby
 
-unless defined? LOADED_COMPASS_CONFIG
-  LOADED_COMPASS_CONFIG = true
-  require 'compass'
-  Compass.add_project_configuration 'compass/config.rb'
-end
-sass_options = Compass.sass_engine_options
-
 # A few helpful tips about the Rules file:
 #
 # * The string given to #compile and #route are matching patterns for
