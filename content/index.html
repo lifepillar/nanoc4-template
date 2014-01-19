@@ -41,6 +41,27 @@
 <div class="row">
   <div class="large-12 columns">
 
+    <!-- Desktop Slider -->
+    <div class="hide-for-small">
+      <div id="featured">
+        <ul data-orbit>
+          <li>
+            <img src="<%= Lorem.image('1000x400', :text => 'Slide Image 1') %>" alt="slide image">
+            <div class="orbit-caption">Here goes a caption</div>
+          </li>
+          <li>
+            <img src="<%= Lorem.image('1000x400', :text => 'Slide Image 2') %>" alt="slide image">
+            <div class="orbit-caption">Here goes another caption</div>
+          </li>
+          <li>
+            <img src="<%= Lorem.image('1000x400', :text => 'Slide Image 3') %>" alt="slide image">
+            <div class="orbit-caption">Yet another caption</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- End Desktop Slider -->
+
     <!-- Mobile Header -->
     <div class="row">
       <div class="small-12 show-for-small"><br>
@@ -57,18 +78,22 @@
 
       <!-- Thumbnails -->
       <div class="large-3 small-6 columns">
+        <img src="<%= Lorem.kitten('250x250', :text => 'Thumbnail') %>" alt="thumbnail">
         <h6 class="panel">Description</h6>
       </div>
 
       <div class="large-3 small-6 columns">
+        <img src="<%= Lorem.kitten('250x250', :text => 'Thumbnail') %>" alt="thumbnail">
         <h6 class="panel">Description</h6>
       </div>
 
       <div class="large-3 small-6 columns">
+        <img src="<%= Lorem.kitten('250x250', :text => 'Thumbnail') %>" alt="thumbnail">
         <h6 class="panel">Description</h6>
       </div>
 
       <div class="large-3 small-6 columns">
+        <img src="<%= Lorem.kitten('250x250', :text => 'Thumbnail') %>" alt="thumbnail">
         <h6 class="panel">Description</h6>
       </div>
       <!-- End Thumbnails -->
@@ -86,7 +111,7 @@
           <div class="row">
             <div class="large-6 small-6 columns">
               <h4>Header</h4><hr/>
-              <h5 class="subheader">blah blah</h5>
+              <h5 class="subheader"><%= Lorem.words 20 %></h5>
 
               <div class="show-for-small" style="text-align: center;">
                 <a href="#" class="small radius button">Call To Action!</a><br>
@@ -94,7 +119,7 @@
               </div>
             </div>
             <div class="large-6 small-6 columns">
-              <p>blah blah</p>
+              <p><%= Lorem.paragraph %></p>
             </div>
           </div>
         </div>
