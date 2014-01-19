@@ -1,4 +1,6 @@
+/.bundle/*
+!/.bundle/config
 .DS_Store
 .ruby-version
 Gemfile.lock
-/public/*
+/public
