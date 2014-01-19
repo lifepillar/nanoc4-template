@@ -2,17 +2,17 @@
 add_import_path "bower_components/foundation/scss"
 add_import_path "static/font-awesome/scss"
 
-http_path            = "/"
-project_path = File.expand_path(File.join(File.dirname(__FILE__), '..'))
-css_dir              = "public/assets/stylesheets"  # compiled files
-sass_dir             = "content/assets/stylesheets" # source files
-fonts_dir            = "content/assets/fonts"
-images_dir           = "content/assets/images"
-javascripts_dir      = "content/assets/javascripts"
-#http_javascripts_dir = "javascripts"
-#http_stylesheets_dir = "stylesheets"
-#http_images_dir      = "images"
-#http_fonts_dir       = "fonts"
+http_path             = "/"
+project_path          = File.expand_path(File.join(File.dirname(__FILE__), '..'))
+css_dir               = "public/css"  # compiled files
+sass_dir              = "content/assets/stylesheets" # source files
+fonts_dir             = "content/assets/fonts"
+images_dir            = "content/assets/images"
+javascripts_dir       = "content/assets/javascripts"
+http_javascripts_path = "javascripts"
+http_stylesheets_path = "css"
+http_images_path      = "images"
+http_fonts_dir        = "fonts"
 
 # when using SCSS:
 sass_options = {
