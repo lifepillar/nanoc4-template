@@ -2,6 +2,7 @@
 !/.bundle/config
 .DS_Store
 .ruby-version
+/bin
 /bower_components
 Gemfile.lock
 /public
