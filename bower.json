@@ -1,0 +1,6 @@
+{
+  "name": "Zurb Foundation",
+  "dependencies": {
+    "foundation": "zurb/bower-foundation"
+  }
+}
