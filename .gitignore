@@ -2,8 +2,10 @@
 !/.bundle/config
 .DS_Store
 .ruby-version
+/.sass-cache
 /bin
 /bower_components
+crash.log
 Gemfile.lock
 /public
 /tmp
