@@ -17,6 +17,15 @@ To update Zurb Foundation:
 The project is self-contained: the commands above will not install anything
 outside the project's folder.
 
+To build and view your site:
+
+    nanoc compile
+    nanoc view
+
+To build a production version of your site, delete the `tmp` folder and type:
+
+    NANOC_ENV=production nanoc compile
+
 To update [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
 download the latest release and put it inside the `static` folder
 (only the `fonts` and `scss` folders are needed).
