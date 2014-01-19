@@ -18,7 +18,11 @@ sass_options = {
   :syntax => :scss
 }
 
-output_style = :expanded # :expanded or :nested or :compact or :compressed
+if ENV['NANOC_ENV'] == 'production'
+  output_style = :compressed # :expanded or :nested or :compact or :compressed
+else
+  output_style = :expanded
+end
 
 # To enable relative paths to assets via compass helper functions. Uncomment:
 # relative_assets = true
