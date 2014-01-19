@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'adsf'
-gem 'compass' # required by foundation
-gem 'foundation'
+gem 'compass'
 gem 'kramdown'
 gem 'nanoc'
