@@ -2,7 +2,7 @@
 !/.bundle/config
 .DS_Store
 .ruby-version
-/.sass-cache
+.sass-cache
 /bin
 /bower_components
 crash.log
