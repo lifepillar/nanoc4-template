@@ -60,3 +60,31 @@ data_sources:
 
   -
     type: static
+
+# Site-specific metadata
+site:
+  name: My Site
+  slogan: The slogan goes here
+  author: Myself
+  url: http://site.url.com/
+blog:
+  name: My Blog
+  slogan: This is my blog. It's awesome.
+  author: Blog Author
+  contact_url: #
+menu:
+  - title: Blog
+    link: /blog
+  - title: Foo
+    link: #
+  - title: Bar
+    link: #
+footer:
+  - title: Link 1
+    link: #
+  - title: Link 2
+    link: #
+  - title: Link 3
+    link: #
+  - title: Link 4
+    link: #
