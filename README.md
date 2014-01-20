@@ -16,7 +16,7 @@ that includes support for:
 - [Bower](http://bower.io/).
 
 
-## Installation
+## Installation and upgrade
 
 First, install [Bundler](http://bundler.io/) if you haven't done so already:
 
@@ -27,10 +27,6 @@ To install this project, clone the repository, then
     cd nanoc-by-lifepillar
     bundle install
     bower install
-
-To update Zurb Foundation:
-
-    bower update
 
 The project is self-contained: the commands above will not install anything
 outside the project's folder.
@@ -43,6 +39,10 @@ To build and view your site:
 To build a production version of your site, delete the `tmp` folder and type:
 
     NANOC_ENV=production bundle exec nanoc compile
+
+To update Zurb Foundation:
+
+    bower update
 
 To update [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
 download the latest release and drop it inside the `static` folder
