@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
     <title><%= @config[:site][:name] + ' - ' + @item[:title] %></title>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="javascripts/modernizr.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/javascripts/modernizr.js"></script>
     <link href="/favicon.png" rel="icon" type="image/png">
     <% unless @item[:head].nil? %>
       <% for p in @item[:head] %>
@@ -22,7 +22,7 @@
       <% end %>
     <% end %>
     <%= yield %>
-    <script src="javascripts/all.js"></script>
+    <script src="/javascripts/all.js"></script>
     <% unless @item[:endbody].nil? %>
       <% for p in @item[:endbody] %>
         <%= render "/partials/#{p}" %>
