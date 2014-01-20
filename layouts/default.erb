@@ -22,7 +22,7 @@
       <% end %>
     <% end %>
     <%= yield %>
-    <script src="javascripts/foundation.js"></script>
+    <script src="javascripts/all.js"></script>
     <% unless @item[:endbody].nil? %>
       <% for p in @item[:endbody] %>
         <%= render "/partials/#{p}" %>
