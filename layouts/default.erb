@@ -1,17 +1,16 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8">
-    <title>A Brand New nanoc Site - <%= @item[:title] %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+    <title>SITE NAME - <%= @item[:title] %></title>
     <link rel="stylesheet" href="css/main.css">
     <script src="javascripts/modernizr.js"></script>
-    <!-- you don't need to keep this, but it's cool for stats! -->
-    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
   </head>
   <body>
-    <div id="main">
-      <%= yield %>
-    </div>
+    <%= yield %>
     <script src="javascripts/foundation.js"></script>
   </body>
 </html>
