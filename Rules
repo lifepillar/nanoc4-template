@@ -13,13 +13,16 @@
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
 
-compile '/assets/stylesheets/*' do
-  filter :sass, Compass.sass_engine_options
+passthrough '/assets/files/*'
+
+compile '/assets/images/favicon' do
 end
 
-route '/assets/stylesheets/*' do
-  '/css/' + File.basename(item.identifier) + '.css'
+route '/assets/images/favicon' do
+  '/' + File.basename(item.identifier) + '.' + item[:extension]
 end
+
+passthrough '/assets/images/*'
 
 compile '/assets/javascripts/*' do
   filter :concat_js
@@ -30,13 +33,28 @@ route '/assets/javascripts/*' do
   '/javascripts/' + File.basename(item.identifier) + '.js'
 end
 
-# Static
-ignore '/font-awesome/scss/*'
-compile '/font-awesomefonts/*' do
+compile '/assets/stylesheets/*' do
+  filter :sass, Compass.sass_engine_options
 end
+
+route '/assets/stylesheets/*' do
+  '/css/' + File.basename(item.identifier) + '.css'
+end
+
+# static
+ignore '/font-awesome/scss/*'
+
+compile '/font-awesome/fonts/*' do
+end
+
 route '/font-awesome/fonts/*' do
   '/fonts/' + File.basename(item.identifier)
 end
+# end static
+
+passthrough '/404'
+passthrough '/humans'
+passthrough '/robots'
 
 compile '*' do
   if item.binary?
