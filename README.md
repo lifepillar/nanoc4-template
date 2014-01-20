@@ -1,10 +1,28 @@
-# Nanoc + Zurb Foundation 5 + Font Awesome
+# Nanoc by Lifepillar
 
 This is a starting point for a web site built with [Nanoc](http://nanoc.ws/)
-that includes support for [Zurb Foundation 5](http://foundation.zurb.com)
-and [Font Awesome](http://fortawesome.github.io/Font-Awesome/).
+that includes support for:
 
-To install, clone the repository, then
+- [Zurb Foundation 5](http://foundation.zurb.com);
+- [Font Awesome](http://fortawesome.github.io/Font-Awesome/);
+- [Disqus](http://disqus.com/);
+- Classic and Universal [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/);
+- [MathJax](http://www.mathjax.org/).
+
+
+## Requirements
+
+- Ruby (tested with Ruby 2.x).
+- [Bower](http://bower.io/).
+
+
+## Installation
+
+First, install [Bundler](http://bundler.io/) if you haven't done so already:
+
+    gem install bundler
+
+To install this project, clone the repository, then
 
     cd nanoc-by-lifepillar
     bundle install
@@ -19,16 +37,17 @@ outside the project's folder.
 
 To build and view your site:
 
-    nanoc compile
-    nanoc view
+    bundle exec nanoc compile
+    bundle exec nanoc view
 
 To build a production version of your site, delete the `tmp` folder and type:
 
-    NANOC_ENV=production nanoc compile
+    NANOC_ENV=production bundle exec nanoc compile
 
 To update [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
-download the latest release and put it inside the `static` folder
-(only the `fonts` and `scss` folders are needed).
+download the latest release and drop it inside the `static` folder
+(only the `fonts` and `scss` folders are needed), replacing the existing
+`font-awesome` folder.
 
 
 ## Usage and customization
@@ -36,7 +55,7 @@ download the latest release and put it inside the `static` folder
 First of all, edit the site's metadata at the bottom of `nanoc.yaml`.
 Such metadata consist of the site's title, slogan, author, etc…, and menu data.
 For example, to add a link to the main menu, just add a title/link pair to the
-`menu` item.
+`menu` item. Then, you should edit or replace `content/index.erb`.
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
 and `endbody` to load additional partials, just before the `</head>` tag, just
