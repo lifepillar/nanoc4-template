@@ -11,5 +11,5 @@ end
 sass_options = Compass.sass_engine_options
 
 unless ENV['NANOC_ENV']
-  puts "\n\033[1;35mWarn:\033[0m For production build, delete the tmp directory and set NANOC_ENV=production."
+  puts "\n\033[1;35mWarn:\033[0m For a production build, delete the 'tmp' dir\n      and set NANOC_ENV=production."
 end
