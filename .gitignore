@@ -7,5 +7,6 @@
 /bower_components
 crash.log
 Gemfile.lock
+/output.diff
 /public
 /tmp
