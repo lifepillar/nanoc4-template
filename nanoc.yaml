@@ -88,3 +88,7 @@ footer:
     link: #
   - title: Link 4
     link: #
+google_analytics:
+  code: UA-XXXX-Y
+disqus:
+  shortname: REPLACE-ME

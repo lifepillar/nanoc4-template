@@ -1,7 +1,7 @@
 <!-- Classic Google Analytics -->
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-XXXX-Y']); // TODO: Set your Google Analytics code here
+  _gaq.push(['_setAccount', '<%= @config[:google_analytics][:code] %>']);
   _gaq.push(['_trackPageview']);
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
