@@ -9,9 +9,24 @@
     <link rel="stylesheet" href="css/main.css">
     <script src="javascripts/modernizr.js"></script>
     <link href="/favicon.png" rel="icon" type="image/png">
+    <% unless @item[:head].nil? %>
+      <% for p in @item[:head] %>
+        <%= render "/partials/#{p}" %>
+      <% end %>
+    <% end %>
   </head>
   <body>
+    <% unless @item[:beginbody].nil? %>
+      <% for p in @item[:beginbody] %>
+        <%= render "/partials/#{p}" %>
+      <% end %>
+    <% end %>
     <%= yield %>
     <script src="javascripts/foundation.js"></script>
+    <% unless @item[:endbody].nil? %>
+      <% for p in @item[:endbody] %>
+        <%= render "/partials/#{p}" %>
+      <% end %>
+    <% end %>
   </body>
 </html>

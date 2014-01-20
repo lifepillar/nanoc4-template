@@ -29,3 +29,28 @@ To build a production version of your site, delete the `tmp` folder and type:
 To update [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
 download the latest release and put it inside the `static` folder
 (only the `fonts` and `scss` folders are needed).
+
+
+## Usage and customization
+
+First of all, edit the site's metadata at the bottom of `nanoc.yaml`.
+Such metadata consist of the site's title, slogan, author, etc…, and menu data.
+For example, to add a link to the main menu, just add a title/link pair to the
+`menu` item.
+
+In the frontmatter of any item, you may use the variables `head`, `beginbody`,
+and `endbody` to load additional partials, just before the `</head>` tag, just
+after `<body>`, and just before `</body>`, respectively. For example, for a page
+that includes MathJax, Disqus comments and Google Analytics, your frontmatter
+might look like this:
+
+    ---
+    title: My Page
+    head: [mathjax]
+    endbody: [disqus, analytics]
+    ---
+
+Each variable takes a list of names of partials, which must exist inside
+`layouts/partials`. You may use your own partials in the same way. Of course,
+for a bunch of pages having the same structure, it is better to define a custom
+layout.
