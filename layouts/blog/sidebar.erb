@@ -5,8 +5,14 @@
   <% end %>
 </ul>
 
-<h5>Tags</h5>
+<h5>By Year</h5>
+<ul class="no-bullet">
+  <% sorted_articles.group_by { |a| a[:created_at].year }.each do |year, articles| %>
+    <li><%= link_to year, '/FIXME' %> (<%= articles.size %>)</li>
+  <% end %>
+</ul>
 
+<h5>Tags</h5>
 <ul class="no-bullet">
   <% @items.select { |item| item.identifier.match(/^\/blog\/tags\/.+/) }.each do |item| %>
     <li><%= link_to item[:tag], item.path %> (<%= item[:count] %>)</li>
