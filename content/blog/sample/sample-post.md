@@ -10,8 +10,6 @@ excerpt:    A sample post, with code and math.
 
 What follows contains an excerpt from D. Knuth's _The Art of Computer Programming_.
 
-<!-- more -->
-
 Algorithm E from Knuth's book, expressed in Ruby:
 
 ~~~ ruby
