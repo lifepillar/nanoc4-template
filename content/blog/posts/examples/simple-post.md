@@ -1,5 +1,6 @@
 ---
 title: Simple Post
+created_at: 2014-3-25 12:30 UTC
 author_name: Myself
 author_uri: mailto:github@lifepillar.com
 tags:  [example, test]
