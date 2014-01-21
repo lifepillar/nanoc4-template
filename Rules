@@ -73,6 +73,7 @@ end
 # Blog posts
 compile '/blog/*' do
   filter :kramdown
+  layout 'blog/article'
   layout 'blog'
   layout 'default'
 end
