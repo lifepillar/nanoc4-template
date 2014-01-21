@@ -3,7 +3,7 @@ title:      Sample Post
 kind:       article
 created_at: 2014-1-19 09:31 UTC
 updated_at: 2014-1-20 11:45 UTC
-tags:       [example, test, mathematical]
+tags:       [example, mathematical]
 head:       [mathjax]
 excerpt:    A sample post, with code and math.
 ---

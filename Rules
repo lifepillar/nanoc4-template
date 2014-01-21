@@ -17,7 +17,7 @@ require 'date'
 preprocess do
   # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
   # Assume all items inside /blog are blog articles unless otherwise specified.
-  items.select {|item| item.identifier.match(/^\/blog\/.+/) }.each do |item|
+  items.select { |item| item.identifier.match(/^\/blog\/.+/) }.each do |item|
     item[:kind] ||= 'article' # Required by Nanoc::Helpers::Blogging
   end
 
