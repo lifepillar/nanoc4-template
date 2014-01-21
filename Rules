@@ -28,6 +28,9 @@ preprocess do
     else
       item[:created_at] = Time.now
     end
+    if item[:updated_at]
+      item[:updated_at] = Time.parse(item[:updated_at])
+    end
   end
 
   # Build tag pages for blog postts
