@@ -98,7 +98,9 @@ end
 
 # Blog posts
 compile '/blog/posts/*' do
-  filter :kramdown
+  filter :kramdown,
+         :enable_coderay => true,
+         :coderay_line_numbers => nil
   layout 'blog/article'
   layout 'blog/default'
   layout 'default'
