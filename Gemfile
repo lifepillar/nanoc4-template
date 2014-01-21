@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adsf'
+gem 'builder' # For feed.xml
 gem 'compass'
 gem 'kramdown'
 gem 'nanoc'

@@ -1,7 +1,7 @@
 ---
 title: Simple Post
-author: Myself
-contact_url: mailto:github@lifepillar.com
+author_name: Myself
+author_uri: mailto:github@lifepillar.com
 tags:  [example, test]
 ---
 

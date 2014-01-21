@@ -76,6 +76,15 @@ route '/blog' do
   item.identifier + 'index.html'
 end
 
+# Blog feed
+compile '/feed' do
+  filter :erb
+end
+
+route '/feed' do
+  '/blog/feed.xml'
+end
+
 # Blog tags (items generated during preprocessing)
 compile '/blog/tags/*' do
   filter :erb

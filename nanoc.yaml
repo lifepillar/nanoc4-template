@@ -62,16 +62,20 @@ data_sources:
     type: static
 
 # Site-specific metadata
+base_url: http://site.url.com
 site:
   name: My Site
   slogan: The slogan goes here
-  author: Myself
-  url: http://site.url.com/
+  author_name: Myself
 blog:
   name: My Blog
   slogan: This is my blog. It's awesome.
-  author: Blog Author
-  contact_url: #
+  author_name: Blog Author
+  author_uri: #
+feed:
+  title: My Blog Feed
+  author_name: Blog Author
+  author_uri: http://site.url.com
 menu:
   - title: Blog
     link: /blog
