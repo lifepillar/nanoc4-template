@@ -73,6 +73,17 @@ route '/blog' do
   item.identifier + 'index.html'
 end
 
+# Blog tags (items generated during preprocessing)
+compile '/blog/tags/*' do
+  filter :erb
+  layout 'blog'
+  layout 'default'
+end
+
+route '/blog/tags/*' do
+  item.identifier + 'index.html'
+end
+
 # Blog posts
 compile '/blog/*' do
   filter :kramdown
