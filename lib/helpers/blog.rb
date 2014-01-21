@@ -12,3 +12,24 @@ def summary(item)
     return ""
   end
 end
+
+def all_tags(items_set= nil, sort = false)
+  items_set ||= @items # default to all items if no items passed
+  tags = {}
+  items_set.each do |i|
+    (i[:tags] || []).each{ |t| tags[t] ||= 0; tags[t] += 1 }
+  end
+  # if sort is true, sort by item count descending
+  sort ? tags.sort{ |tl, tr| tr[1] <=> tl[1] } : tags
+end
+
+def build_tag_pages(items_set)
+  all_tags(items_set, true).each do |tag,count|
+    @items << Nanoc::Item.new(
+      "<%= render 'blog/tag', :tag => '#{tag}' %>",
+      {:title => 'Articles tagged ‘#{tag}’', :tag => tag, :count => count},
+      "/blog/tags/#{tag}/",
+      :binary => false
+    )
+  end
+end

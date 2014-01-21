@@ -29,6 +29,9 @@ preprocess do
       item[:created_at] = Time.now
     end
   end
+
+  # Build tag pages for blog postts
+  build_tag_pages(articles())
 end
 
 passthrough '/assets/files/*'
