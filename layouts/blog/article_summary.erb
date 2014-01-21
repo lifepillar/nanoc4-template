@@ -1,17 +1,10 @@
 <article>
-
   <h3><%= link_to @item[:title], @item.path %></h3>
 
-  <h6>
-    Posted on <time datetime="<%= @item[:created_at].strftime('%Y-%m-%d') %>"><%= @item[:created_at].strftime('%A %b %e, %Y') %></time>
-    by <a href="<%= @item[:contact_url] || @config[:blog][:contact_url] %>"><%= @item[:author] || @config[:blog][:author] %></a>
-  </h6>
+  <%= render 'blog/posted_on' %>
 
   <p><%= summary(@item) %></p>
   <p class="readmore"><%= link_to 'Read more &rarr;', @item.path, :class => 'secondary button radius' %></p>
 
-  <% unless @item[:tags].nil? %>
-    <p><strong>Tags:</strong> <%= tags_for(@item) %></p>
-  <% end %>
-
+  <%= render 'blog/tags' %>
 </article>
