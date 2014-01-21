@@ -12,6 +12,24 @@
 #   “content/about.html”). To select all children, grandchildren, … of an
 #   item, use the pattern “/about/*/”; “/about/*” will also select the parent,
 #   because “*” matches zero or more characters.
+require 'date'
+
+preprocess do
+  # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
+  # Assume all items inside /blog are blog articles unless otherwise specified.
+  items.select {|item| item.identifier.match(/^\/blog\/.+/) }.each do |item|
+    item[:kind] ||= 'article' # Required by Nanoc::Helpers::Blogging
+  end
+
+  # Assign a date to all items (not only blog posts) unless they have it already defined.
+  @items.each do |item|
+    if item[:created_at]
+      item[:created_at] = Time.parse(item[:created_at])
+    else
+      item[:created_at] = Time.now
+    end
+  end
+end
 
 passthrough '/assets/files/*'
 
@@ -39,6 +57,33 @@ end
 
 route '/assets/stylesheets/*' do
   '/css/' + File.basename(item.identifier) + '.css'
+end
+
+# Blog index
+compile '/blog' do
+  filter :erb
+  layout 'blog'
+  layout 'default'
+end
+
+route '/blog' do
+  item.identifier + 'index.html'
+end
+
+# Blog posts
+compile '/blog/*' do
+  filter :kramdown
+  layout 'blog'
+  layout 'default'
+end
+
+route '/blog/*' do
+  begin
+    year, month, day = item.attributes[:created_at].strftime('%Y-%m-%d').match(/(\d{4})-(\d\d)-(\d\d)/)[1..3]
+    "/blog/#{year}/#{month}/#{day}/#{File.basename(item.identifier)}/index.html"
+  rescue
+    puts "\033[1;35mWarn:\033[0m Could not parse date for #{item.identifier}"
+  end
 end
 
 # static
