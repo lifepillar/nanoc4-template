@@ -1,7 +1,4 @@
 <h6>
-  Posted on <time datetime="<%= @item[:created_at].strftime('%Y-%m-%d') %>"><%= @item[:created_at].strftime('%A %b %e, %Y') %></time>
+  Posted on <time datetime="<%= @item[:created_at].strftime('%Y-%m-%d') %>"><%= @item[:created_at].strftime('%B %d, %Y %l:%M %p %Z') %></time>
   by <a href="<%= @item[:author_uri] || @config[:blog][:author_uri] %>"><%= @item[:author_name] || @config[:blog][:author_name] %></a>
-  <% unless @item[:updated_at].nil? %>
-  [Updated on <time datetime="<%= @item[:updated_at].strftime('%Y-%m-%d') %>"><%= @item[:updated_at].strftime('%A %b %e, %Y') %></time>]
-  <% end %>
 </h6>
