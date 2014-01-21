@@ -115,6 +115,14 @@ route '/blog/posts/*' do
   end
 end
 
+compile '/sitemap' do
+  filter :erb
+end
+
+route '/sitemap' do
+  '/sitemap.xml'
+end
+
 # static
 ignore '/font-awesome/scss/*'
 
