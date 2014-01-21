@@ -1,0 +1,30 @@
+<!-- Nav Bar -->
+<div class="row">
+  <div class="large-12 columns">
+    <div class="nav-bar right">
+      <ul class="button-group">
+        <li><a href="/" class="button"><%= @config[:site][:name] %></a></li>
+        <% @config[:menu].each do |item| %>
+        <li><a href="<%= item[:link] %>" class="button"><%= item[:title] %></a></li>
+        <% end %>
+      </ul>
+    </div>
+    <h1><%= @config[:blog][:name] %> <small><%= @config[:blog][:slogan] %></small></h1>
+    <a class="right" href="/blog/feed.xml"><i class="fa fa-rss"></i></a>
+    <hr>
+  </div>
+</div>
+<!-- End Nav -->
+
+<!-- Main Blog Content -->
+<div class="row">
+  <div class="large-9 columns" role="content">
+    <%= yield %>
+  </div>
+
+  <aside class="large-3 columns">
+    <%= render '/blog/sidebar' %>
+  </aside>
+</div><!-- .row -->
+
+<%= render '/sample/sample_footer' %>
