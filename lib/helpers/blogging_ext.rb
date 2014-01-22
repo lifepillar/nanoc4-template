@@ -35,8 +35,8 @@ module BloggingExtensions
   def build_tag_pages(items_set)
     all_tags(items_set, true).each do |tag,count|
       @items << Nanoc::Item.new(
-        "<%= render 'blog/tag', :tag => '#{tag}' %>",
-        {:title => 'Articles tagged ‘#{tag}’', :tag => tag, :count => count},
+        "<%= render '/blog/tag', :tag => '#{tag}' %>",
+        {:title => "Articles tagged ‘#{tag}’", :tag => tag, :count => count},
         "/blog/tags/#{tag}/",
         :binary => false
       )
