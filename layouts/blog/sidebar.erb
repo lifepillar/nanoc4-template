@@ -5,13 +5,13 @@
   <% end %>
 </ul>
 
-<h5>Archive</h5>
+<h5>Archives</h5>
 <ul class="no-bullet">
   <% sorted_articles.group_by { |a| a[:created_at].year }.each do |year, year_articles| %>
-    <li><%= link_to year, '/FIXME' %> (<%= year_articles.size %>)
+    <li><%= link_to year, "/blog/archives/#{year}" %> (<%= year_articles.size %>)
       <ul class="no-bullet">
-        <% year_articles.group_by { |a| a[:created_at].strftime('%B') }.each do |month, articles| %>
-          <li><%= link_to month, '/FIXME' %> (<%= articles.size %>)</li>
+        <% year_articles.group_by { |a| a[:created_at].month }.each do |month, articles| %>
+          <li><%= link_to Date::MONTHNAMES[month], "/blog/archives/#{year}/#{Date::ABBR_MONTHNAMES[month]}" %> (<%= articles.size %>)</li>
         <% end %>
       </ul>
     </li>

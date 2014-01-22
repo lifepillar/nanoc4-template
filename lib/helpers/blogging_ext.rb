@@ -42,4 +42,33 @@ module BloggingExtensions
       )
     end
   end
+
+  # Returns an array of items for the given year and, optionally, the given month.
+  # The month must be an integer in [1..12].
+  def items_for_period(items_set, year, month = nil)
+    items_set.select { |i| i[:created_at].year == year && (month.nil? ? true : i[:created_at].month == month)}
+  end
+
+  # Builds lists of items by year and month.
+  def build_archives(items_set)
+    items_set.group_by { |a| a[:created_at].year }.each do |year, year_articles|
+      @items << Nanoc::Item.new(
+        # TODO: is there a way to pass year_articles to the item?
+        # As a page attribute, it does not work.
+        # As an argument to render, it produces an error.
+        "<%= render '/blog/archive' %>", # page
+        {:title => "Articles from #{year}", :year => year, :month => nil}, # page attributes
+        "/blog/archives/#{year}/", # path
+        :binary => false
+      )
+      year_articles.group_by { |a| a[:created_at].month }.each do |month, month_articles|
+        @items << Nanoc::Item.new(
+          "<%= render '/blog/archive' %>", # page
+          {:title => "Articles from #{Date::MONTHNAMES[month]} #{year}", :year => year, :month => month}, # page attributes
+          "/blog/archives/#{year}/#{Date::ABBR_MONTHNAMES[month]}", # path
+          :binary => false
+        )
+      end
+    end
+  end
 end # module

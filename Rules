@@ -35,6 +35,9 @@ preprocess do
 
   # Build tag pages for blog postts
   build_tag_pages(articles())
+
+  # Build yearly and monthly archives of blog posts
+  build_archives(sorted_articles())
 end
 
 passthrough '/assets/files/*'
@@ -93,6 +96,17 @@ compile '/blog/tags/*' do
 end
 
 route '/blog/tags/*' do
+  item.identifier + 'index.html'
+end
+
+# Blog archives (items generated during preprocessing)
+compile '/blog/archives/*' do
+  filter :erb
+  layout 'blog/default'
+  layout 'default'
+end
+
+route '/blog/archives/*' do
   item.identifier + 'index.html'
 end
 

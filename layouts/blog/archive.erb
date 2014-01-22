@@ -1,0 +1,5 @@
+<h2><%= @item[:title] %></h2>
+
+<% items_for_period(sorted_articles(), @item[:year], @item[:month]).each do |post| %>
+  <%= render '/blog/article_summary', :item => post, :content => post.compiled_content %>
+<% end %>
