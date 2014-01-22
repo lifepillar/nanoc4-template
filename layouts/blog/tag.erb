@@ -1,4 +1,4 @@
-<h2>Articles tagged ‘<%= tag %>’</h2>
+<h2><%= @item[:title] %></h2>
 
 <% items_with_tag(tag).sort{ |i1, i2| i2[:created_at] <=> i1[:created_at] }.each do |post| %>
   <%= render '/blog/article_summary', :item => post, :content => post.compiled_content %>
