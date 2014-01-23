@@ -95,21 +95,19 @@ and import additional (S)CSS files in `content/assets/stylesheets/main.scss`.
 The [Compass](http://compass-style.org) configuration file is in
 `compass/config.rb`.
 
-
-## Custom commands for publishing and authoring
-
-To publish your site using rsync you may use the built-in command `nanoc deploy`.
-It is also possible to deploy with Git, using the following custom command:
-
-    nanoc git-push
-
-By default, this command will push the `public` folder to the `gh-pages` branch of
-the `origin` repository. See `nanoc help git-push` for the available options.
-
-There is also a command to simplify the creation of a blog post:
+Finally, there is a custom command to simplify the creation of a blog post:
 
     nanoc create-post Title of my wonderful post
 
 By default, this command creates a file with `.mmd` suffix (MultiMarkdown)
 in the `content/blog/posts` folder.
 Pass `-m` if you want just a Markdown file (with `.md` suffix).
+
+## Publishing
+
+The template is configured to publish your site on Github pages using the command:
+
+    nanoc deploy
+
+You may change the remote and the branch from `origin` and `gh-pages`, respectively,
+to something else (`remote` can be the name or the URI of a branch).
