@@ -110,4 +110,4 @@ The template is configured to publish your site on Github pages using the comman
     nanoc deploy
 
 You may change the remote and the branch from `origin` and `gh-pages`, respectively,
-to something else (`remote` can be the name or the URI of a branch).
+to something else (`remote` can be the name or the URI of a repository).
