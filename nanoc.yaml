@@ -61,6 +61,13 @@ data_sources:
   -
     type: static
 
+# Deploy
+deploy:
+  default:
+    kind:   git
+    remote: origin
+    branch: gh-pages
+
 # Site-specific metadata
 base_url: http://site.url.com
 site:
