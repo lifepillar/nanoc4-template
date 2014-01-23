@@ -1,5 +1,5 @@
 usage       'create-post <title>'
-aliases     :cp, :post
+aliases     :post
 summary     'Create a new blog post'
 description 'Create a new blog post.'
 
