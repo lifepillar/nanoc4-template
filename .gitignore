@@ -1,5 +1,4 @@
-/.bundle/*
-!/.bundle/config
+/.bundle
 .DS_Store
 .ruby-version
 .sass-cache
