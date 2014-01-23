@@ -24,12 +24,12 @@ preprocess do
   # Assign a date to all items (not only blog posts) unless they have it already defined.
   @items.each do |item|
     if item[:created_at]
-      item[:created_at] = Time.parse(item[:created_at])
+      item[:created_at] = attribute_to_time(item[:created_at])
     else
       item[:created_at] = Time.now
     end
     if item[:updated_at]
-      item[:updated_at] = Time.parse(item[:updated_at])
+      item[:updated_at] = attribute_to_time(item[:updated_at])
     end
   end
 
