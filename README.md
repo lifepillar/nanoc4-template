@@ -1,20 +1,24 @@
 # Nanoc by Lifepillar
 
-This is a starting point for a web site built with [Nanoc](http://nanoc.ws/)
-that includes support for:
+This is a starting point for a web site built with [Nanoc](http://nanoc.ws/).
+Out of the box you get:
 
-- [Zurb Foundation 5](http://foundation.zurb.com);
-- [Font Awesome](http://fortawesome.github.io/Font-Awesome/);
+- [Zurb Foundation 5](http://foundation.zurb.com)
+- [Font Awesome 4.0.3](http://fortawesome.github.io/Font-Awesome/)
+- A blog! Including feeds, archives, tags, etc…
+- [Multimarkdown](http://fletcherpenney.net/multimarkdown/) support.
 - [Disqus](http://disqus.com/);
 - Classic and Universal [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/);
 - [MathJax](http://www.mathjax.org/).
+- Syntax highlighting with [Coderay](http://coderay.rubychan.de) or [highlight.js](http://highlightjs.org).
+- Helper functions for placeholder text and images (see `lib/helpers/lorem.rb`).
 
 
 ## Requirements
 
 - Ruby (tested with Ruby 2.x).
 - [Bower](http://bower.io/).
-
+- [Multimarkdown](http://fletcherpenney.net/multimarkdown/) (optional).
 
 ## Installation and upgrade
 
@@ -53,9 +57,14 @@ download the latest release and drop it inside the `static` folder
 ## Usage and customization
 
 First of all, edit the site's metadata at the bottom of `nanoc.yaml`.
-Such metadata consist of the site's title, slogan, author, etc…, and menu data.
+Such metadata consist of the site's title, slogan, author, etc…, menu data,
+and other information.
 For example, to add a link to the main menu, just add a title/link pair to the
-`menu` item. Then, you should edit or replace `content/index.erb`.
+`menu` item in `nanoc.yaml`.
+
+Then, you should edit or replace `content/index.erb`. You may also want to
+remove `content/blog/posts/examples`. You can delete the whole `content/blog`
+folder if you do not need a blog.
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
 and `endbody` to load additional partials, just before the `</head>` tag, just
@@ -73,3 +82,10 @@ Each variable takes a list of names of partials, which must exist inside
 `layouts/partials`. You may use your own partials in the same way. Of course,
 for a bunch of pages having the same structure, it is better to define a custom
 layout.
+
+There is also a command to simplify the creation of a blog post:
+
+    nanoc create-post Title of my wonderful post
+
+By default, it creates a file with `.mmd` suffix (MultiMarkdown).
+Pass `-m` if you want just a Markdown file (with `.md` suffix).
