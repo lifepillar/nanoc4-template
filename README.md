@@ -3,15 +3,21 @@
 This is a starting point for a web site built with [Nanoc](http://nanoc.ws/).
 Out of the box you get:
 
-- [Zurb Foundation 5](http://foundation.zurb.com)
-- [Font Awesome 4.0.3](http://fortawesome.github.io/Font-Awesome/)
-- A blog! Including feeds, archives, tags, etc…
-- [Multimarkdown](http://fletcherpenney.net/multimarkdown/) support.
+- [Zurb Foundation 5](http://foundation.zurb.com);
+- [Font Awesome 4.0.3](http://fortawesome.github.io/Font-Awesome/);
+- a blog! Including feeds, archives, tags, etc…
+- [Multimarkdown](http://fletcherpenney.net/multimarkdown/) support (and Markdown, too!);
 - [Disqus](http://disqus.com/);
 - Classic and Universal [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/);
-- [MathJax](http://www.mathjax.org/).
-- Syntax highlighting with [Coderay](http://coderay.rubychan.de) or [highlight.js](http://highlightjs.org).
-- Helper functions for placeholder text and images (see `lib/helpers/lorem.rb`).
+- [MathJax](http://www.mathjax.org/); 
+- syntax highlighting with [Coderay](http://coderay.rubychan.de) or [highlight.js](http://highlightjs.org);
+- helper functions for placeholder text and images (see `lib/helpers/lorem.rb`);
+- aggregated JavaScript and CSS;
+- publishing your site via Git to Github Pages or other hosts;
+- the great flexibility that nanoc offers.
+
+Take a look at the [sample content](http://lifepillar.github.io/nanoc-by-lifepillar/)
+that comes with this template.
 
 
 ## Requirements
@@ -19,6 +25,7 @@ Out of the box you get:
 - Ruby (tested with Ruby 2.x).
 - [Bower](http://bower.io/).
 - [Multimarkdown](http://fletcherpenney.net/multimarkdown/) (optional).
+
 
 ## Installation and upgrade
 
@@ -83,9 +90,26 @@ Each variable takes a list of names of partials, which must exist inside
 for a bunch of pages having the same structure, it is better to define a custom
 layout.
 
+You may require additional JavaScripts in `content/assets/javascripts/all.js`
+and import additional (S)CSS files in `content/assets/stylesheets/main.scss`.
+The [Compass](http://compass-style.org) configuration file is in
+`compass/config.rb`.
+
+
+## Custom commands for publishing and authoring
+
+To publish your site using rsync you may use the built-in command `nanoc deploy`.
+It is also possible to deploy with Git, using the following custom command:
+
+    nanoc git-push
+
+By default, this command will push the `public` folder to the `gh-pages` branch of
+the `origin` repository. See `nanoc help git-push` for the available options.
+
 There is also a command to simplify the creation of a blog post:
 
     nanoc create-post Title of my wonderful post
 
-By default, it creates a file with `.mmd` suffix (MultiMarkdown).
+By default, this command creates a file with `.mmd` suffix (MultiMarkdown)
+in the `content/blog/posts` folder.
 Pass `-m` if you want just a Markdown file (with `.md` suffix).
