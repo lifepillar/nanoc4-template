@@ -115,6 +115,7 @@ compile '/blog/posts/*' do
   if 'mmd' == @item[:extension]
     filter :multimarkdown,
            #:path => '/usr/local/bin',
+           :accept => true,
            :mask => true,
            :labels => false,
            :smart => true,
