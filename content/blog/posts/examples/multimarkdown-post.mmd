@@ -1,0 +1,54 @@
+---
+title:       Post from MultiMarkdown
+created_at:  2014-04-25 16:07:03
+tags:        [multimarkdown, test]
+kind:        article
+head:        [mathjax]
+endbody:     [highlightjs]
+---
+
+The source code of this post is written in MultiMarkdown.
+
+<!-- more -->
+
+In nanoc, use this filter, which supports MultiMarkdown 4 options:
+
+```ruby
+filter :multimarkdown,
+       #:path => '/usr/local/bin',
+       :mask => true,
+       :labels => false,
+       :accept => true,
+       :smart => true,
+       :process_html => false,
+       :compatibility => false
+```
+
+MultiMarkdown {~~cannot->can also~~} process [CriticMarkup][].
+
+[CriticMarkup]: http://criticmarkup.com "CriticMarkup" class=external
+
+Here is some text containing a footnote [^somesamplefootnote].
+
+[^somesamplefootnote]: Here is the text of the footnote itself.
+
+A table:
+
+|             |          Grouping           ||
+First Header  | Second Header | Third Header |
+ ------------ | :-----------: | -----------: |
+Content       |          *Long Cell*        ||
+Content       |   **Cell**    |         Cell |
+
+New section   |     More      |         Data |
+And more      | With an escaped '\|'         ||  
+[Prototype table]
+
+An example of math within a paragraph --- \\({e}^{i\pi }+1=0\\)
+--- easy enough.
+
+And an equation on it's own:
+
+\\[ {x}_{1,2}=\frac{-b\pm \sqrt{{b}^{2}-4ac}}{2a} \\]
+
+That's it.
