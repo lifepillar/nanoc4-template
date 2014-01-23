@@ -112,9 +112,19 @@ end
 
 # Blog posts
 compile '/blog/posts/*' do
-  filter :kramdown,
-         :enable_coderay => true,
-         :coderay_line_numbers => nil
+  if 'mmd' == @item[:extension]
+    filter :multimarkdown,
+           #:path => '/usr/local/bin',
+           :mask => true,
+           :labels => false,
+           :smart => true,
+           :process_html => false,
+           :compatibility => false
+  else # assume Markdown
+    filter :kramdown,
+           :enable_coderay => true,
+           :coderay_line_numbers => nil
+  end
   layout 'blog/article'
   layout 'blog/default'
   layout 'default'
