@@ -71,7 +71,7 @@ blog:
   name: My Blog
   slogan: This is my blog. It's awesome.
   author_name: Blog Author
-  author_uri: #
+  author_uri: "#"
 feed:
   title: My Blog Feed
   author_name: Blog Author
@@ -80,18 +80,18 @@ menu:
   - title: Blog
     link: /blog
   - title: Foo
-    link: #
+    link: "#"
   - title: Bar
-    link: #
+    link: "#"
 footer:
   - title: Link 1
-    link: #
+    link: "#"
   - title: Link 2
-    link: #
+    link: "#"
   - title: Link 3
-    link: #
+    link: "#"
   - title: Link 4
-    link: #
+    link: "#"
 google_analytics:
   code: UA-XXXX-Y
 disqus:
