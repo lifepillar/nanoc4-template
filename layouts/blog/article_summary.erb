@@ -3,7 +3,8 @@
 
   <%= render 'blog/posted_on' %>
 
-  <p><%= summary(@item) %></p>
+  <%= summary(@item) %>
+
   <p class="readmore"><%= link_to 'Read more &rarr;', @item.path, :class => 'secondary button radius' %></p>
 
   <%= render 'blog/tags' %>
