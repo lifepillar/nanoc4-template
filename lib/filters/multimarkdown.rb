@@ -3,7 +3,7 @@ class MultiMarkdownFilter < Nanoc::Filter
   type :text
   @@debug = false
 
-  # Executes this filter. This params argument accepts the following keys:
+  # Executes this filter. The params argument accepts the following keys:
   #
   # :path   Path to the directory containing the MultiMarkdown executable.
   #         Use this if multimarkdown is not in your PATH.
