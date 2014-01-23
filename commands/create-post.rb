@@ -3,10 +3,10 @@ aliases     :post
 summary     'Create a new blog post'
 description 'Create a new blog post.'
 
-option  :a, :author, 'Author name', :argument => :optional
-option  :f, :filename, 'The filename (without suffix)'
-flag    :m, :md,     'Append .md suffix (Markdown)'
-flag    :M, :mmd,    'Append .mmd suffix (MultiMarkdown, default)'
+option  :a, :author, 'author name', :argument => :optional
+option  :f, :filename, 'file name (without suffix)'
+flag    :m, :md,     'append .md suffix (Markdown)'
+flag    :M, :mmd,    'append .mmd suffix (MultiMarkdown, default)'
 flag    :h, :help,   'show help for this command' do |value, cmd|
   puts cmd.help
   exit 0
