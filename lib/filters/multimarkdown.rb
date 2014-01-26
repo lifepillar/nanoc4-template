@@ -6,10 +6,10 @@ module Nanoc::Filters
     identifier :multimarkdown
     type :text
 
-    # Executes this filter. Parameters passed to this filter will be passed to
-    # MultiMarkdown, with the exception of `:path` and `:debug`.
+    # Executes this filter. Parameters passed to this filter through `:opts`
+    # will be passed to MultiMarkdown.
     #
-    # @param content [String] The content to filter.
+    # @param [String] content The content to filter.
     #
     # @option params [Symbol] :opts ([]) A list of options for Multimarkdown.
     #  Example: opts: %w( --compatibility --to=latex --smart )
@@ -20,7 +20,7 @@ module Nanoc::Filters
     #
     # @option params [Symbol] :debug (false) Set to true to enable debugging.
     #
-    # @return        [String] The filtered content
+    # @return [String] The filtered content
     def run(content, params = {})
       debug = params.delete(:debug) { false }
       cmd = [executable_from_params(params)]
