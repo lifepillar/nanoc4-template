@@ -95,13 +95,24 @@ and import additional (S)CSS files in `content/assets/stylesheets/main.scss`.
 The [Compass](http://compass-style.org) configuration file is in
 `compass/config.rb`.
 
-Finally, there is a custom command to simplify the creation of a blog post:
+There is a custom command to simplify the creation of a blog post:
 
     nanoc create-post Title of my wonderful post
 
 By default, this command creates a file with `.mmd` suffix (MultiMarkdown)
 in the `content/blog/posts` folder.
 Pass `-m` if you want just a Markdown file (with `.md` suffix).
+
+Finally, there is a custom `:external` filter that allows you to pass content to
+an external program. Such program must be able to read its input from STDIN and
+send its output to STDOUT. For example, if you have installed
+[htmlcompressor](https://code.google.com/p/htmlcompressor/), you can have your
+pages minified by adding a filter rule similar to the following:
+
+    filter :external,
+      :exec => 'htmlcompressor',
+      :opts => %w( --compress-css )
+
 
 ## Publishing
 
