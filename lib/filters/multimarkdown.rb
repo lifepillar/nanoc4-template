@@ -22,7 +22,7 @@ module Nanoc::Filters
     #
     # @return [String] The filtered content
     def run(content, params = {})
-      debug = params.delete(:debug) { false }
+      debug = params.fetch(:debug, false)
       cmd = [executable_from_params(params)]
       cmd.concat(params.fetch(:opts, []))
       odebug(cmd.join(' ')) if debug
@@ -39,7 +39,7 @@ module Nanoc::Filters
   private
 
     def executable_from_params(params)
-      mm = params.delete(:path)  { nil }
+      mm = params.fetch(:path, nil)
       mm.nil? ? 'multimarkdown' : File.join(mm, 'multimarkdown')    
     end
 
