@@ -129,6 +129,7 @@ compile '/blog/posts/*' do
   layout 'blog/default'
   layout 'default'
   #filter :relativize_paths, :type => :html
+  filter :external, :exec => 'htmlcompressor' if ENV['NANOC_ENV'] == 'production'
 end
 
 route '/blog/posts/*' do
@@ -170,6 +171,7 @@ compile '*' do
     filter :erb
     layout 'default'
     #filter :relativize_paths, :type => :html
+    filter :external, :exec => 'htmlcompressor' if ENV['NANOC_ENV'] == 'production'
   end
 end
 
