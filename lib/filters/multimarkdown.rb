@@ -1,78 +1,52 @@
-class MultiMarkdownFilter < Nanoc::Filter
-  identifier :multimarkdown
-  type :text
-  @@debug = false
+# encoding: utf-8 
 
-  # Executes this filter. The params argument accepts the following keys:
-  #
-  # :path   Path to the directory containing the MultiMarkdown executable.
-  #         Use this if multimarkdown is not in your PATH.
-  # :debug  Set to true to enable debugging.
-  #
-  # All other keys are parsed and passed to multimarkdown.
-  def run(content, params = {})
-    @@debug = params.delete(:debug) { false }
-    mm = params.delete(:path)  { nil }
-    mm = mm.nil? ? 'multimarkdown' : File.join(mm, 'multimarkdown')
-    opts = parseOptions(params)
-    cmd = mm + ' ' + opts.join(' ')
-    odebug(cmd)
-    out = ''
-    IO.popen(cmd, mode='r+') do |io|
-      io.write content
-      io.close_write # let the process know you've given it all the data
-      out = io.read
-    end
-    odebug(out)
-    out
-  end
+module Nanoc::Filters
 
-  def parseOptions(params)
-    opts = []
-    snippet = true
-    params.each do |key,value|
-      case key
-      when :to
-        # Validate value
-        if value.match(/^[a-z]+$/).nil?
-          puts "\033[1;35mWarn:\033[0m Invalid output format: #{value}"
-        else
-          opts << "--to=#{value}"
-        end
-      when :compatibility
-        opts << '--compatibility' if value
-      when :snippet
-        snippet = value
-      when :process_html
-        opts << '--process-html' if value
-      when :random
-        opts << '--random' if value
-      when :accept
-        opts << '--accept' if value
-      when :reject
-        opts << '--reject' if value
-      when :smart
-        opts << (value ? '--smart' : '--nosmart')
-      when :notes
-        opts << (value ? '--notes' : '--nonotes')
-      when :labels
-        opts << (value ? '--labels' : '--nolabels')
-      when :mask
-        opts << (value ? '--mask' : '--nomask')
-      when :batch
-        opts << '--batch' if value
-      when :full
-        opts << '--full' if value
-      else
-        puts "\033[1;35mWarn:\033[0m Unknown MultiMarkdown option: #{key}"
+  class MultiMarkdownFilter < Nanoc::Filter
+    identifier :multimarkdown
+    type :text
+
+    # Executes this filter. Parameters passed to this filter will be passed to
+    # MultiMarkdown, with the exception of `:path` and `:debug`.
+    #
+    # @param content [String] The content to filter.
+    #
+    # @option params [Symbol] :opts ([]) A list of options for Multimarkdown.
+    #  Example: opts: %w( --compatibility --to=latex --smart )
+    #
+    # @option params [Symbol] :path ("") The path to the directory containing 
+    #   the `multimarkdown` executable. Use this when the executable is not in
+    #   your PATH.
+    #
+    # @option params [Symbol] :debug (false) Set to true to enable debugging.
+    #
+    # @return        [String] The filtered content
+    def run(content, params = {})
+      debug = params.delete(:debug) { false }
+      cmd = [executable_from_params(params)]
+      cmd.concat(params.fetch(:opts, []))
+      odebug(cmd.join(' ')) if debug
+      out = ''
+      IO.popen(cmd, mode='r+') do |io|
+        io.write content
+        io.close_write # let the process know you've given it all the data
+        out = io.read
       end
+      odebug(out) if debug
+      out
     end
-    opts << '--snippet' if snippet
-    opts
+
+  private
+
+    def executable_from_params(params)
+      mm = params.delete(:path)  { nil }
+      mm.nil? ? 'multimarkdown' : File.join(mm, 'multimarkdown')    
+    end
+
+    def odebug(msg)
+      msg.each_line { |l| puts "\033[1;31mDEBUG:\033[0m #{l}" }
+    end
+
   end
 
-  def odebug(msg)
-    msg.each_line { |l| puts "\033[1;31mDEBUG:\033[0m #{l}" } if @@debug
-  end
-
-end # MultiMarkdownFilter
+end

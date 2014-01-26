@@ -119,12 +119,7 @@ compile '/blog/posts/*' do
   if 'mmd' == @item[:extension]
     filter :multimarkdown,
            #:path => '/usr/local/bin',
-           :accept => true,
-           :mask => true,
-           :labels => false,
-           :smart => true,
-           :process_html => false,
-           :compatibility => false
+           :opts => %w(--accept --mask --labels --smart)
   else # assume Markdown
     filter :kramdown,
            :enable_coderay => true,
