@@ -101,5 +101,6 @@ footer:
     link: "#"
 google_analytics:
   code: UA-XXXX-Y
+  site: mysite.org
 disqus:
   shortname: REPLACE-ME
