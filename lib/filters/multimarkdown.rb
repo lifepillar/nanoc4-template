@@ -1,7 +1,6 @@
 # encoding: utf-8 
 
 module Nanoc::Filters
-
   class MultiMarkdownFilter < Nanoc::Filter
     identifier :multimarkdown
     type :text
@@ -22,31 +21,8 @@ module Nanoc::Filters
     #
     # @return [String] The filtered content
     def run(content, params = {})
-      debug = params.fetch(:debug, false)
-      cmd = [executable_from_params(params)]
-      cmd.concat(params.fetch(:opts, []))
-      odebug(cmd.join(' ')) if debug
-      out = ''
-      IO.popen(cmd, mode='r+') do |io|
-        io.write content
-        io.close_write # let the process know you've given it all the data
-        out = io.read
-      end
-      odebug(out) if debug
-      out
+      filter = Nanoc::Filter.named(:external).new(assigns)
+      filter.run(content, params.merge({ exec: 'multimarkdown' }))
     end
-
-  private
-
-    def executable_from_params(params)
-      mm = params.fetch(:path, nil)
-      mm.nil? ? 'multimarkdown' : File.join(mm, 'multimarkdown')    
-    end
-
-    def odebug(msg)
-      msg.each_line { |l| puts "\033[1;31mDEBUG:\033[0m #{l}" }
-    end
-
   end
-
 end
