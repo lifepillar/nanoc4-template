@@ -36,11 +36,8 @@ First, install [Bundler](http://bundler.io/) if you haven't done so already:
 To install this project, clone the repository, then
 
     cd nanoc-by-lifepillar
-    bundle install --path vendor/bundle
+    bundle install
     bower install
-
-The project is self-contained: the commands above will not install anything
-outside the project's folder.
 
 To build and view your site:
 
