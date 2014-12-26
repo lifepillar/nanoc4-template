@@ -10,17 +10,12 @@ The source code of this post is written in MultiMarkdown.
 
 <!-- more -->
 
-In nanoc, use this filter, which supports MultiMarkdown 4 options:
+In nanoc, you may use the `nanoc-external` filter to process
+MultiMarkdown documents:
 
 ```ruby
-filter :multimarkdown,
-       #:path => '/usr/local/bin',
-       :mask => true,
-       :labels => false,
-       :accept => true,
-       :smart => true,
-       :process_html => false,
-       :compatibility => false
+filter :external, :exec => 'multimarkdown',
+       :options => %w(--accept --mask --labels --smart)
 ```
 
 MultiMarkdown {~~cannot~>can~~} process [CriticMarkup][]:
