@@ -117,13 +117,17 @@ end
 # Blog posts
 compile '/blog/posts/*' do
   if 'mmd' == @item[:extension]
+    filter :markdown_code_fence_colorize_adapter # Change ```lang to ```language-lang
     filter :external, :exec => 'multimarkdown',
            :options => %w(--accept --mask --labels --smart)
   else # assume Markdown
     filter :kramdown,
-           :enable_coderay => true,
-           :coderay_line_numbers => nil
+           :syntax_highlighter => nil
   end
+ # filter :colorize_syntax,
+ #        :default_colorizer => :coderay
+  filter :colorize_syntax,
+         :default_colorizer => :coderay
   layout 'blog/article'
   layout 'blog/default'
   layout 'default'
