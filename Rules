@@ -124,10 +124,9 @@ compile '/blog/posts/*' do
     filter :kramdown,
            :syntax_highlighter => nil
   end
- # filter :colorize_syntax,
- #        :default_colorizer => :coderay
   filter :colorize_syntax,
-         :default_colorizer => :coderay
+         :default_colorizer => :pygmentize,
+			:pygmentize => { :nowrap => 'True' }
   layout 'blog/article'
   layout 'blog/default'
   layout 'default'
