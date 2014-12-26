@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'adsf'
 gem 'builder' # For feed.xml
 gem 'coderay'
+gem 'pygmentize'
 gem 'compass'
 gem 'kramdown'
 gem 'nanoc'
