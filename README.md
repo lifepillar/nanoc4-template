@@ -65,7 +65,7 @@ For example, to add a link to the main menu, just add a title/link pair to the
 `menu` item in `nanoc.yaml`.
 
 Then, you should edit or replace `content/index.erb`. You may also want to
-remove `content/blog/posts/examples`. You can delete the whole `content/blog`
+remove `content/blog/posts/examples`. You may delete the whole `content/blog`
 folder if you do not need a blog.
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
