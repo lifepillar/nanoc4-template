@@ -88,7 +88,7 @@ layout.
 You may require additional JavaScripts in `content/assets/javascripts/all.js`
 and import additional (S)CSS files in `content/assets/stylesheets/main.scss`.
 The [Compass](http://compass-style.org) configuration file is in
-`compass/config.rb`.
+`compass_config.rb`.
 
 There is a custom command to simplify the creation of a blog post:
 
