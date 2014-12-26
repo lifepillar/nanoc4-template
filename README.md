@@ -9,8 +9,8 @@ Out of the box you get:
 - [Multimarkdown](http://fletcherpenney.net/multimarkdown/) support (and Markdown, too!);
 - [Disqus](http://disqus.com/);
 - Classic and Universal [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/);
-- [MathJax](http://www.mathjax.org/); 
-- syntax highlighting with [Coderay](http://coderay.rubychan.de) or [highlight.js](http://highlightjs.org);
+- [MathJax](http://www.mathjax.org/);
+- syntax highlighting with [Pygments](http://pygments.org)
 - helper functions for placeholder text and images (see `lib/helpers/lorem.rb`);
 - aggregated JavaScript and CSS;
 - publishing your site via Git to Github Pages or other hosts;
@@ -41,12 +41,12 @@ To install this project, clone the repository, then
 
 To build and view your site:
 
-    bundle exec nanoc 
+    bundle exec nanoc
     bundle exec nanoc view
 
 To build a production version of your site, delete the `tmp` folder and type:
 
-    NANOC_ENV=production bundle exec nanoc 
+    NANOC_ENV=production bundle exec nanoc
 
 To update Zurb Foundation:
 
@@ -87,18 +87,19 @@ layout.
 
 You may require additional JavaScripts in `content/assets/javascripts/all.js`
 and import additional (S)CSS files in `content/assets/stylesheets/main.scss`.
-The [Compass](http://compass-style.org) configuration file is in
+[Compass](http://compass-style.org) configuration is in
 `compass_config.rb`.
 
 There is a custom command to simplify the creation of a blog post:
 
     nanoc create-post Title of my wonderful post
 
-By default, this command creates a file with `.mmd` suffix (MultiMarkdown)
+By default, this command creates a Markdown file
 in the `content/blog/posts` folder.
-Pass `-m` if you want just a Markdown file (with `.md` suffix).
+Pass `-M` if you want a MultiMarkdown file.
 
-Finally, there is a custom `:external` filter that allows you to pass content to
+Finally, this template uses the [nanoc-external](https://github.com/nanoc/nanoc-external) filter,
+which allows you to pass content to
 an external program. Such program must be able to read its input from STDIN and
 send its output to STDOUT. For example, if you have installed
 [htmlcompressor](https://code.google.com/p/htmlcompressor/), you can have your
@@ -106,7 +107,8 @@ pages minified by adding a filter rule similar to the following:
 
     filter :external,
       :exec => 'htmlcompressor',
-      :opts => %w( --compress-css )
+      :options => %w( --compress-css )
+
 
 ## Customize Font Awesome
 
