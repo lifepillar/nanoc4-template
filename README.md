@@ -3,8 +3,8 @@
 This is a starting point for a web site built with [Nanoc](http://nanoc.ws/).
 Out of the box you get:
 
-- [Zurb Foundation 5](http://foundation.zurb.com);
-- [Font Awesome 4.0.3](http://fortawesome.github.io/Font-Awesome/);
+- The latest [Zurb Foundation](http://foundation.zurb.com);
+- [Font Awesome](http://fontawesome.io);
 - a blog! Including feeds, archives, tags, etc…
 - [Multimarkdown](http://fletcherpenney.net/multimarkdown/) support (and Markdown, too!);
 - [Disqus](http://disqus.com/);
@@ -44,21 +44,19 @@ outside the project's folder.
 
 To build and view your site:
 
-    bundle exec nanoc compile
+    bundle exec nanoc 
     bundle exec nanoc view
 
 To build a production version of your site, delete the `tmp` folder and type:
 
-    NANOC_ENV=production bundle exec nanoc compile
+    NANOC_ENV=production bundle exec nanoc 
 
 To update Zurb Foundation:
 
     bower update
 
-To update [Font Awesome](http://fortawesome.github.io/Font-Awesome/),
-download the latest release and drop it inside the `static` folder
-(only the `fonts` and `scss` folders are needed), replacing the existing
-`font-awesome` folder.
+To update [Font Awesome](http://fontawesome.io), edit `layouts/default.erb`
+and update the link to Font Awesome's CDN.
 
 
 ## Usage and customization
@@ -112,6 +110,19 @@ pages minified by adding a filter rule similar to the following:
     filter :external,
       :exec => 'htmlcompressor',
       :opts => %w( --compress-css )
+
+## Customize Font Awesome
+
+If, for some reason, you need to customize Font Awesome, do the following:
+
+- remove the link to Font Awesome in the `<head>` section of `layouts/default.erb`;
+- create a `static` folder in the project root;
+- download the latest Font Awesome release and drop it into the `static` folder
+  (only the `fonts` and `scss` folders are needed);
+- Uncomment the `@import` line at the bottom of `content/assets/stylesheets/main.scss`;
+- Uncomment the `add_import_path` line at the top of `compass_config.rb`.
+
+Compile your site again and you are ready to go!
 
 
 ## Publishing
