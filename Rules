@@ -60,6 +60,8 @@ route '/assets/javascripts/*' do
   '/javascripts/' + File.basename(item.identifier) + '.js'
 end
 
+ignore '/assets/stylesheets/_*'
+
 compile '/assets/stylesheets/*' do
   filter :sass, Compass.sass_engine_options
 end
