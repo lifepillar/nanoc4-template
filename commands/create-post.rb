@@ -5,8 +5,8 @@ description 'Create a new blog post.'
 
 option  :a, :author, 'author name', :argument => :optional
 option  :f, :filename, 'file name (without suffix)'
-flag    :m, :md,     'append .md suffix (Markdown)'
-flag    :M, :mmd,    'append .mmd suffix (MultiMarkdown, default)'
+flag    :m, :md,     'append .md suffix (Markdown, defaul)'
+flag    :M, :mmd,    'append .mmd suffix (MultiMarkdown)'
 flag    :h, :help,   'show help for this command' do |value, cmd|
   puts cmd.help
   exit 0
@@ -33,7 +33,7 @@ Summary
 
 Here we go!
 FRONTMATTER
-  suffix = opts[:md] ? 'md' : 'mmd'
+  suffix = opts[:mmd] ? 'mmd' : 'md'
   filename = title.downcase
   filename.gsub!(/\s+/, '-') # Replace spaces with dashes
   filename.gsub!(/--+/, '-') # Collapse dashes
