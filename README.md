@@ -10,7 +10,7 @@ Out of the box you get:
 - [Disqus](http://disqus.com/);
 - Classic and Universal [Google Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/);
 - [MathJax](http://www.mathjax.org/);
-- syntax highlighting with [Pygments](http://pygments.org)
+- syntax highlighting with [Pygments](http://pygments.org);
 - helper functions for placeholder text and images (see `lib/helpers/lorem.rb`);
 - aggregated JavaScript and CSS;
 - publishing your site via Git to Github Pages or other hosts;
