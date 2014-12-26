@@ -117,9 +117,8 @@ end
 # Blog posts
 compile '/blog/posts/*' do
   if 'mmd' == @item[:extension]
-    filter :multimarkdown,
-           #:path => '/usr/local/bin',
-           :opts => %w(--accept --mask --labels --smart)
+    filter :external, :exec => 'multimarkdown',
+           :options => %w(--accept --mask --labels --smart)
   else # assume Markdown
     filter :kramdown,
            :enable_coderay => true,
