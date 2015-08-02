@@ -1,6 +1,7 @@
 .DS_Store
 .ruby-version
 .sass-cache
+crash.log
 Gemfile.lock
 /bower_components/
 /public/
