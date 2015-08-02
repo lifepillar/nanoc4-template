@@ -3,5 +3,6 @@ source 'https://rubygems.org'
 gem 'adsf'
 gem 'compass'
 gem 'kramdown'
-gem 'nanoc'
+# Nanoc 4
+gem 'nanoc', :git => 'git://github.com/nanoc/nanoc.git'
 
