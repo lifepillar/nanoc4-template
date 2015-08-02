@@ -1,0 +1,8 @@
+{
+  "name": "lifepillar-nanoc4-template",
+  "dependencies": {
+    "foundation": "~5",
+    "fontawesome": "~4",
+    "bootstrap-sass": "~3"
+  }
+}
