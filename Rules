@@ -75,6 +75,12 @@ route '/sitemap.erb' do
   '/sitemap.xml'
 end
 
+# Passthrough
+
+passthrough '/humans.txt'
+passthrough '/robots.txt'
+
+
 # This is an example rule that matches Markdown (.md) files, and filters them
 # using the :kramdown filter. It is commented out by default, because kramdown
 # is not bundled with Nanoc or Ruby.
