@@ -3,7 +3,7 @@
 .sass-cache
 crash.log
 Gemfile.lock
-/bower_components/
+/content/assets/bower_components/
 /public/
 /tmp/
 
