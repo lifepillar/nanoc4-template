@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="nanoc <%= Nanoc::VERSION %>">
+    <title><%= @config[:site][:name] + (@item[:title] ? ' - ' + @item[:title] : '') %></title>
+    <link href="/favicon.png" rel="icon" type="image/png">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/js/modernizr.js"></script>
+
+    <% for p in @item.fetch(:head, []) %>
+      <%= render "/partials/#{p}" %>
+    <% end %>
+
+  </head>
+
+  <body>
+
+    <% for p in @item.fetch(:beginbody, []) %>
+      <%= render "/partials/#{p}" %>
+    <% end %>
+
+    <%= yield %>
+
+    <script src="/js/all.js"></script>
+
+    <% for p in @item.fetch(:endbody, []) %>
+      <%= render "/partials/#{p}" %>
+    <% end %>
+
+  </body>
+
+</html>
+
