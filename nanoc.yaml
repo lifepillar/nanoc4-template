@@ -80,6 +80,22 @@ site:
   name: My Site
   slogan: The slogan goes here
   author: Myself
+menu:
+  - title: Blog
+    link: /blog
+  - title: Foo
+    link: "#"
+  - title: Bar
+    link: "#"
+footer:
+  - title: Link 1
+    link: "#"
+  - title: Link 2
+    link: "#"
+  - title: Link 3
+    link: "#"
+  - title: Link 4
+    link: "#"
 google_analytics:
   code: UA-XXXX-Y
   site: mysite.org

@@ -16,9 +16,9 @@
 
       <section class="top-bar-section">
         <ul class="left">
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="#">Foo</a></li>
-          <li><a href="#">Bar</a></li>
+          <% @config[:menu].each do |item| %>
+            <li><a href="<%= item[:link] %>"><%= item[:title] %></a></li>
+          <% end %>
         </ul>
 
         <ul class="right">
