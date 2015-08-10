@@ -12,7 +12,7 @@
     <script src="/js/modernizr.js"></script>
 
     <% for p in @item.fetch(:head, []) %>
-      <%= render "/partials/#{p}" %>
+      <%= render "/partials/#{p}.*" %>
     <% end %>
 
   </head>
@@ -20,7 +20,7 @@
   <body>
 
     <% for p in @item.fetch(:beginbody, []) %>
-      <%= render "/partials/#{p}" %>
+      <%= render "/partials/#{p}.*" %>
     <% end %>
 
     <%= yield %>
@@ -28,7 +28,7 @@
     <script src="/js/all.js"></script>
 
     <% for p in @item.fetch(:endbody, []) %>
-      <%= render "/partials/#{p}" %>
+      <%= render "/partials/#{p}.*" %>
     <% end %>
 
   </body>
