@@ -118,5 +118,8 @@ route '/**/*' do
   item.identifier.to_s
 end
 
+
+# Filter all layouts through erb
+
 layout '/**/*', :erb
 
