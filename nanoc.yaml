@@ -73,3 +73,11 @@ checks:
     # E.g.:
     #   exclude: ['^/server_status']
     exclude: []
+
+# Site-specific metadata
+base_url: http://site.url.com
+site:
+  name: My Site
+  slogan: The slogan goes here
+  author: Myself
+
