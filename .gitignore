@@ -2,6 +2,7 @@
 .ruby-version
 .sass-cache
 crash.log
+output.diff
 Gemfile.lock
 /content/assets/components/
 /public/
