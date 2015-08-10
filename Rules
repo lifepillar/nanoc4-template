@@ -1,8 +1,68 @@
 #!/usr/bin/env ruby
 
-compile '/**/*.html' do
-  layout '/default.*'
+preprocess do
+  @config[:env] = ENV['NANOC_ENV'] # See https://github.com/nanoc/nanoc/issues/487
 end
+
+
+# Aggregated Javascript scripts
+
+compile '/assets/scripts/*.js.erb' do
+  filter :erb
+  filter :uglify_js if @config[:env] == 'production'
+end
+
+route '/assets/scripts/*.js.erb' do
+  '/js/' + File.basename(@item.identifier.without_ext)
+end
+
+
+# Other JavaScript scripts
+
+compile '/assets/scripts/*.js' do
+  filter :uglify_js if @config[:env] == 'production'
+end
+
+route '/assets/scripts/*.js' do
+  '/js/' + File.basename(@item.identifier.to_s)
+end
+
+
+# Stylesheets
+
+ignore '/assets/stylesheets/**/_*'
+
+compile '/assets/stylesheets/**/*' do
+  filter :sass, Compass.sass_engine_options
+end
+
+route '/assets/stylesheets/**/*' do
+  '/css/' + File.basename(@item.identifier.with_ext('css'))
+end
+
+
+# Favicon and images
+
+route '/assets/images/favicon.*' do
+  '/' + File.basename(@item.identifier.to_s)
+end
+
+route '/assets/images/*' do
+  '/images/' + File.basename(@item.identifier.to_s)
+end
+
+
+# Fonts
+
+route '/assets/components/bootstrap-sass/assets/fonts/**/*' do
+  '/fonts/bootstrap/' + File.basename(@item.identifier.to_s)
+end
+
+route '/assets/components/fontawesome/fonts/**/*' do
+  '/fonts/' + File.basename(@item.identifier.to_s)
+end
+
+ignore '/assets/components/**/*'
 
 # This is an example rule that matches Markdown (.md) files, and filters them
 # using the :kramdown filter. It is commented out by default, because kramdown
@@ -13,10 +73,19 @@ end
 #  layout '/default.*'
 #end
 
+compile '/**/*.erb' do
+  filter :erb
+  layout '/default.*'
+end
+
+compile '/**/*.html' do
+  layout '/default.*'
+end
+
 compile '/**/*' do
 end
 
-route '/**/*.{html,md}' do
+route '/**/*.{erb,html,md}' do
   if item.identifier =~ '/index.*'
     '/index.html'
   else
@@ -29,3 +98,4 @@ route '/**/*' do
 end
 
 layout '/**/*', :erb
+
