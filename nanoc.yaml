@@ -80,4 +80,9 @@ site:
   name: My Site
   slogan: The slogan goes here
   author: Myself
+google_analytics:
+  code: UA-XXXX-Y
+  site: mysite.org
+disqus:
+  shortname: REPLACE-ME
 
