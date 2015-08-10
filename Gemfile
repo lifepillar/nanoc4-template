@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adsf'     # For nanoc view
+gem 'builder'  # For the sitemap
 gem 'compass'  # For Sass/Compass
 gem 'kramdown' # For :kramdown filter
 gem 'nokogiri' # For nanoc check and :relativize_paths filter
