@@ -8,4 +8,5 @@ gem 'nokogiri'                                          # For nanoc check and :r
 gem 'nanoc', :git => 'git://github.com/nanoc/nanoc.git' # Nanoc 4
 gem 'pry'                                               # For nanoc shell
 gem 'pygmentize'                                        # For syntax coloring
+gem 'w3c_validators'                                    # For nanoc check
 
