@@ -74,19 +74,26 @@ checks:
     #   exclude: ['^/server_status']
     exclude: []
 
+
 # Site-specific metadata
+
 base_url: http://site.url.com
 site:
   name: My Site
   slogan: The slogan goes here
-  author: Myself
+  author_name: Myself
+blog:
+  name: My Blog
+  slogan: This is my blog. It's awesome.
+  author_name: Blog Author
+  author_uri: "#"
+feed:
+  title: My Blog Feed
+  author_name: Blog Author
+  author_uri: http://site.url.com
 menu:
   - title: Blog
     link: /blog
-  - title: Foo
-    link: "#"
-  - title: Bar
-    link: "#"
 footer:
   - title: Link 1
     link: "#"
