@@ -1,0 +1,4 @@
+<% unless @item[:tags].nil? %>
+  <p class="tags"><strong>Tags:</strong> <%= tags_for(@item, :base_url => '/blog/tags/') %></p>
+<% end %>
+

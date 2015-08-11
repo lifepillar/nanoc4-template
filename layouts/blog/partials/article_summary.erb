@@ -1,0 +1,12 @@
+<article class="summary">
+  <h3><%= link_to @item[:title], @item.path %></h3>
+
+  <%= render '/blog/partials/posted_on.*' %>
+
+  <%= Nanoc::Filters::Kramdown.new.run summary(@item) %>
+
+  <p class="readmore"><%= link_to 'Read more &rarr;', @item.path, :class => 'secondary button radius' %></p>
+
+  <%= render '/blog/partials/tags.*' %>
+</article>
+

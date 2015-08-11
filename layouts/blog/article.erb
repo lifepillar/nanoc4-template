@@ -1,0 +1,18 @@
+<% render '/blog/default.*' do %>
+  <article>
+    <h2><%= @item[:title] %></h2>
+
+    <%= render '/blog/partials/posted_on.*' %>
+
+    <%= yield %>
+
+    <% if @item.key?(:updated_at) %>
+      <p><em>[Last updated on <time datetime="<%= @item[:updated_at].strftime('%Y-%m-%d') %>"><%= @item[:updated_at].strftime('%B %d, %Y %l:%M %p %Z') %></time>]</em></p>
+    <% end %>
+    <%= render '/blog/partials/tags.*' %>
+
+    <!-- Uncomment the following line to enable Disqus -->
+    <!--  <%= render '/partials/disqus.*' %> -->
+  </article>
+<% end %>
+
