@@ -1,7 +1,33 @@
 #!/usr/bin/env ruby
 
+require 'date'
+
 preprocess do
   @config[:env] = ENV['NANOC_ENV'] # See https://github.com/nanoc/nanoc/issues/487
+
+  # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
+  # Assume all items inside /blog are blog articles unless otherwise specified.
+  @items.select { |item| item.identifier.to_s =~ %r{^/blog/posts/.+} }.each do |item|
+    item[:kind] ||= 'article' # Required by Nanoc::Helpers::Blogging
+  end
+
+  # Assign a date to all items (not only blog posts) unless they have it already defined.
+  @items.each do |item|
+    if item.key?(:created_at)
+      item[:created_at] = attribute_to_time(item[:created_at])
+    else
+      item[:created_at] = Time.now
+    end
+    if item.key?(:updated_at)
+      item[:updated_at] = attribute_to_time(item[:updated_at])
+    end
+  end
+
+  # Build tag pages for blog posts
+  build_tag_pages(articles())
+
+  # Build yearly and monthly archives of blog posts
+  build_archives(articles())
 end
 
 
@@ -75,20 +101,86 @@ route '/sitemap.erb' do
   '/sitemap.xml'
 end
 
+
+# Blog index
+
+compile '/blog/index.erb' do
+  filter :erb
+  layout '/blog/default.*'
+  layout '/default.*'
+  #filter :relativize_paths, :type => :html
+end
+
+route '/blog/index.erb' do
+  item.identifier.with_ext('html')
+end
+
+
+# Blog feed
+
+compile '/blog/feed.erb' do
+  filter :erb
+  #filter :relativize_paths, :type => :html
+end
+
+route '/blog/feed.erb' do
+  '/blog/feed.xml'
+end
+
+
+# Blog tags (items generated during preprocessing)
+
+compile '/blog/tags/*' do
+  filter :erb
+end
+
+route '/blog/tags/*' do
+  @item.identifier.without_ext + '/index.html'
+end
+
+
+# Blog archives (items generated during preprocessing)
+
+compile '/blog/archives/**/*' do
+  filter :erb
+end
+
+route '/blog/archives/**/*' do
+  @item.identifier.without_ext + '/index.html'
+end
+
+
+# Blog posts
+
+compile '/blog/posts/**/*.{md,mmd}' do
+  if 'mmd' == @item[:extension]
+    filter :markdown_code_fence_colorize_adapter # Change ```lang to ```language-lang
+    filter :external,
+           :exec => 'multimarkdown',
+           :options => %w(--accept --mask --labels --smart)
+  else # assume Markdown
+    filter :kramdown, :syntax_highlighter => nil
+  end
+  filter :colorize_syntax,
+         :default_colorizer => :pygmentize,
+         :pygmentize => { :nowrap => 'True' }
+  layout '/blog/article.*'
+  #filter :relativize_paths, :type => :html
+end
+
+route '/blog/posts/**/*' do
+  d = attribute_to_time @item[:created_at]
+  "/blog/#{d.year}/#{d.month}/#{d.day}/#{File.basename(@item.identifier.without_ext)}/index.html"
+end
+
+
 # Passthrough
 
 passthrough '/humans.txt'
 passthrough '/robots.txt'
 
 
-# This is an example rule that matches Markdown (.md) files, and filters them
-# using the :kramdown filter. It is commented out by default, because kramdown
-# is not bundled with Nanoc or Ruby.
-#
-#compile '/**/*.md' do
-#  filter :kramdown
-#  layout '/default.*'
-#end
+# HTML, ERB and Markdown files
 
 compile '/**/*.erb' do
   filter :erb
@@ -106,7 +198,7 @@ route '/404.html' do
   item.identifier.to_s
 end
 
-route '/**/*.{erb,html,md}' do
+route '/**/*.{erb,html,md,mmd}' do
   if item.identifier =~ '/index.*'
     '/index.html'
   else
