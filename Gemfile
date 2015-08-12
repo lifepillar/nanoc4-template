@@ -12,5 +12,6 @@ gem 'nanoc-external', # :external filter
     :branch => 'nanoc4'
 gem 'pry'             # For nanoc shell
 gem 'pygmentize'      # For syntax coloring
+gem 'uglifier'        # For :uglify_js filter
 gem 'w3c_validators'  # For nanoc check
 
