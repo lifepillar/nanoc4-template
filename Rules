@@ -3,7 +3,8 @@
 require 'date'
 
 preprocess do
-  @config[:env] = ENV['NANOC_ENV'] # See https://github.com/nanoc/nanoc/issues/487
+  @config[:production] = !ENV['NANOC_ENV'].nil? && ENV['NANOC_ENV'] == 'production' # See https://github.com/nanoc/nanoc/issues/487
+  @config[:compress_html] = @config[:production] && system("which htmlcompressor >/dev/null 2>&1")
 
   # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
   # Assume all items inside /blog are blog articles unless otherwise specified.
@@ -35,7 +36,7 @@ end
 
 compile '/assets/scripts/*.js.erb' do
   filter :erb
-  filter :uglify_js if @config[:env] == 'production'
+  filter :uglify_js if @config[:production]
 end
 
 route '/assets/scripts/*.js.erb' do
@@ -46,7 +47,7 @@ end
 # Other JavaScript scripts
 
 compile '/assets/scripts/*.js' do
-  filter :uglify_js if @config[:env] == 'production'
+  filter :uglify_js if @config[:production]
 end
 
 route '/assets/scripts/*.js' do
@@ -107,8 +108,8 @@ end
 compile '/blog/index.erb' do
   filter :erb
   layout '/blog/default.*'
-  layout '/default.*'
   #filter :relativize_paths, :type => :html
+  filter :htmlcompressor if @config[:compress_html]
 end
 
 route '/blog/index.erb' do
@@ -128,24 +129,14 @@ route '/blog/feed.erb' do
 end
 
 
-# Blog tags (items generated during preprocessing)
+# Blog tags and archives (items generated during preprocessing)
 
-compile '/blog/tags/*' do
+compile '/blog/{archives,tags}/**/*' do
   filter :erb
+  filter :htmlcompressor if @config[:compress_html]
 end
 
-route '/blog/tags/*' do
-  @item.identifier.without_ext + '/index.html'
-end
-
-
-# Blog archives (items generated during preprocessing)
-
-compile '/blog/archives/**/*' do
-  filter :erb
-end
-
-route '/blog/archives/**/*' do
+route '/blog/{archives,tags}/**/*' do
   @item.identifier.without_ext + '/index.html'
 end
 
@@ -155,9 +146,6 @@ end
 compile '/blog/posts/**/*.{md,mmd}' do
   if 'mmd' == @item[:extension]
     filter :markdown_code_fence_colorize_adapter # Change ```lang to ```language-lang
-    filter :external,
-           :exec => 'multimarkdown',
-           :options => %w(--accept --mask --labels --smart)
   else # assume Markdown
     filter :kramdown, :syntax_highlighter => nil
   end
@@ -166,6 +154,7 @@ compile '/blog/posts/**/*.{md,mmd}' do
          :pygmentize => { :nowrap => 'True' }
   layout '/blog/article.*'
   #filter :relativize_paths, :type => :html
+  filter :htmlcompressor if @config[:compress_html]
 end
 
 route '/blog/posts/**/*' do
@@ -185,10 +174,12 @@ passthrough '/robots.txt'
 compile '/**/*.erb' do
   filter :erb
   layout '/default.*'
+  filter :htmlcompressor if @config[:compress_html]
 end
 
 compile '/**/*.html' do
   layout '/default.*'
+  filter :htmlcompressor if @config[:compress_html]
 end
 
 compile '/**/*' do
