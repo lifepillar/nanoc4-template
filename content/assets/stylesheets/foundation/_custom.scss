@@ -35,7 +35,9 @@
 div#header-wrapper,
 div#about-wrapper,
 div#work-wrapper,
-div#footer-wrapper {
+div#footer-wrapper,
+div#blog-header-wrapper,
+div#blog-content-wrapper {
   @include grid-row;
 }
 
@@ -70,23 +72,43 @@ div.work-img {
 div#copyright {
   @include grid-column(8);
 }
-
 div#social-links {
   @include grid-column(4);
 }
 
+div.feed {
+  @include grid-column(12);
+  & > a {
+    float: right !important;
+  }
+}
+
+div#post-summaries {
+  @include grid-column(8);
+}
+
+div#blog-index {
+  @include grid-column(4);
+}
+
 // Styling
-#header-wrapper, #about-wrapper, #work-wrapper {
-  border-bottom-width: $hr-border-width;
-  border-bottom-style: $hr-border-style;
-  border-bottom-color: $hr-border-color;
+#about-wrapper,
+#work-wrapper,
+#footer-wrapper,
+#blog-content-wrapper {
+  border-top-width: $hr-border-width;
+  border-top-style: $hr-border-style;
+  border-top-color: $hr-border-color;
 }
 
 #header-wrapper, #about-wrapper {
   padding-bottom: $hr-margin;
 }
 
-#about-wrapper, #work-wrapper, #footer-wrapper {
+#about-wrapper,
+#work-wrapper,
+#footer-wrapper,
+#blog-content-wrapper {
   padding-top: $hr-margin;
 }
 
@@ -119,6 +141,10 @@ nav {
   float: right;
 }
 
+aside.posted-datetime {
+  margin-bottom: rem-calc(20);
+}
+
 span.github {
   @extend .fa;
   @extend .fa-github;
@@ -129,6 +155,12 @@ span.twitter {
   @extend .fa;
   @extend .fa-twitter;
   @extend .fa-2x;
+}
+
+span.feed {
+  @extend .fa;
+  @extend .fa-rss-square;
+  @extend .fa-lg;
 }
 
 pre {

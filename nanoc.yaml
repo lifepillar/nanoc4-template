@@ -77,32 +77,34 @@ checks:
 
 # Site-specific metadata
 
-base_url: http://site.url.com
+base_url: http://nanoc4-template.static.localhost
+
 site:
   name: My Site
   slogan: The slogan goes here
   author_name: Myself
+
 blog:
   name: My Blog
   slogan: This is my blog. It's awesome.
   author_name: Blog Author
   author_uri: "#"
+  url: /blog
+  tags_url: /blog/tags
+  archive_url: /blog/archives
+
 feed:
   title: My Blog Feed
   author_name: Blog Author
   author_uri: http://site.url.com
-menu:
-  - title: Blog
-    link: /blog
-  - title: Link 1
-    link: "#"
-  - title: Link 2
-    link: "#"
+
 github_url: https://github.com/lifepillar/
 twitter_url: https://twitter.com/lifepillar
+
 google_analytics:
   code: UA-XXXX-Y
   site: mysite.org
+
 disqus:
   shortname: REPLACE-ME
 

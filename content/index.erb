@@ -8,9 +8,9 @@
     <div id="menu-wrapper">
       <nav>
         <ul>
-          <% @config[:menu].each do |item| %>
-            <li><a href="<%= item[:link] %>" class="menu-item"><%= item[:title] %></a></li>
-          <% end %>
+          <li><%= link_to 'Blog', @config[:blog][:url], :class => 'menu-item' %></li>
+          <li><%= link_to 'Link 1', '#', :class => 'menu-item' %></li>
+          <li><%= link_to 'Link 2', '#', :class => 'menu-item' %></li>
         </ul>
       </nav>
     </div>

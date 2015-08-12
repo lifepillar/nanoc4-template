@@ -1,32 +1,39 @@
 <% render '/default.*' do %>
-  <!-- Nav Bar -->
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="nav-bar right">
-        <ul class="button-group">
-          <li><a href="/" class="button"><%= @config[:site][:name] %></a></li>
-          <% @config[:menu].each do |item| %>
-            <li><a href="<%= item[:link] %>" class="button"><%= item[:title] %></a></li>
-          <% end %>
-        </ul>
+  <header id="page-header">
+    <div id="blog-header-wrapper">
+      <div id="title-wrapper">
+        <h1>
+          <%= @config[:blog][:name] %> <small><%= @config[:blog][:slogan] %></small>
+        </h1>
       </div>
-      <h1><%= @config[:blog][:name] %> <small><%= @config[:blog][:slogan] %></small></h1>
-      <a class="right" href="/blog/feed.xml"><i class="fa fa-rss-square"></i></a>
-      <hr>
+      <div id="menu-wrapper">
+        <nav>
+          <ul>
+            <li><%= link_to @config[:site][:name], '/', :class => 'menu-item' %></li>
+            <li><%= link_to 'Link 1', '#', :class => 'menu-item' %></li>
+            <li><%= link_to 'Link 2', '#', :class => 'menu-item' %></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="feed">
+        <a href="/blog/feed.xml"><span class="feed"></span></a>
+      </div>
+    </div>
+  </header>
+
+  <div id="blog-content-wrapper">
+    <div id="post-summaries">
+      <main role="main">
+      <%= yield %>
+      </main>
+    </div>
+
+    <div id="blog-index">
+      <aside>
+        <%= render '/blog/partials/sidebar.*' %>
+      </aside>
     </div>
   </div>
-  <!-- End Nav -->
-
-  <!-- Main Blog Content -->
-  <div class="row">
-    <div class="large-8 columns">
-      <%= yield %>
-    </div>
-
-    <aside class="large-4 columns">
-      <%= render '/blog/partials/sidebar.*' %>
-    </aside>
-  </div><!-- .row -->
 
   <%= render '/partials/footer.*' %>
 <% end %>
