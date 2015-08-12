@@ -146,6 +146,9 @@ end
 compile '/blog/posts/**/*.{md,mmd}' do
   if 'mmd' == @item[:extension]
     filter :markdown_code_fence_colorize_adapter # Change ```lang to ```language-lang
+    filter :external,
+           :exec => 'multimarkdown',
+           :options => %w(--accept --mask --labels --smart)
   else # assume Markdown
     filter :kramdown, :syntax_highlighter => nil
   end
