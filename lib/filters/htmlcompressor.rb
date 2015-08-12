@@ -6,7 +6,7 @@ class HtmlCompressorFilter < Nanoc::Filter
       content,
       params = {
         :exec => 'htmlcompressor',
-        :options => %w(-t html --preserve-comments)
+        :options => %w(-t html)
       }
     )
   end
