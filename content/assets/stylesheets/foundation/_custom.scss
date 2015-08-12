@@ -1,4 +1,136 @@
 // Put you custom styles here
+
+// small-column and large-column can be used together instead of grid-column.
+@mixin small-column($columns,
+                    $last-column: false,
+                    $center: false,
+                    $offset: false,
+                    $push: false,
+                    $pull: false,
+                    $collapse: false,
+                    $float: left)
+{
+  @media #{$small-only} {
+    @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+  }
+}
+
+@mixin large-column($columns,
+                    $last-column: false,
+                    $center: false,
+                    $offset: false,
+                    $push: false,
+                    $pull: false,
+                    $collapse: false,
+                    $float: left)
+{
+  @media #{$medium-up} {
+    @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+  }
+}
+
+
+// The grid
+
+div#header-wrapper,
+div#about-wrapper,
+div#work-wrapper,
+div#footer-wrapper {
+  @include grid-row;
+}
+
+div#title-wrapper {
+  @include grid-column(7);
+}
+
+div#menu-wrapper {
+  @include grid-column(5);
+}
+
+div#banner-wrapper {
+  @include grid-column(12);
+}
+
+div#info {
+  @include grid-column(8);
+}
+
+div#photo {
+  @include grid-column(4);
+}
+
+div#tagline {
+  @include grid-column(12);
+}
+
+div.work-img {
+  @include grid-column(3);
+}
+
+div#copyright {
+  @include grid-column(8);
+}
+
+div#social-links {
+  @include grid-column(4);
+}
+
+// Styling
+#header-wrapper, #about-wrapper, #work-wrapper {
+  border-bottom-width: $hr-border-width;
+  border-bottom-style: $hr-border-style;
+  border-bottom-color: $hr-border-color;
+}
+
+#header-wrapper, #about-wrapper {
+  padding-bottom: $hr-margin;
+}
+
+#about-wrapper, #work-wrapper, #footer-wrapper {
+  padding-top: $hr-margin;
+}
+
+.logo {
+  @extend .fa;
+  @extend .fa-black-tie;
+  @extend .fa-fw;
+}
+
+nav {
+  float: right;
+}
+
+#menu-wrapper ul {
+  @include button-group-container();
+  .menu-item {
+    @include button();
+  }
+  & > li {
+    @include button-group-style();
+  }
+}
+
+.work-description {
+  @include panel();
+}
+
+#social-links > ul {
+  @include inline-list;
+  float: right;
+}
+
+span.github {
+  @extend .fa;
+  @extend .fa-github;
+  @extend .fa-2x;
+}
+
+span.twitter {
+  @extend .fa;
+  @extend .fa-twitter;
+  @extend .fa-2x;
+}
+
 pre {
   margin-bottom: $paragraph-margin-bottom;
   & code {

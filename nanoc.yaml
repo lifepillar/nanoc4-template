@@ -94,15 +94,12 @@ feed:
 menu:
   - title: Blog
     link: /blog
-footer:
   - title: Link 1
     link: "#"
   - title: Link 2
     link: "#"
-  - title: Link 3
-    link: "#"
-  - title: Link 4
-    link: "#"
+github_url: https://github.com/lifepillar/
+twitter_url: https://twitter.com/lifepillar
 google_analytics:
   code: UA-XXXX-Y
   site: mysite.org
