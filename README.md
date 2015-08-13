@@ -165,7 +165,7 @@ The following steps must be executed every time you purge and/or delete the
 
         git checkout -b gh-pages
 
-5. Create at least one commit in the public repo:
+5. Create at least one commit in the `gh-pages` branch:
 
         git add -A
         git commit "Initial commit."
