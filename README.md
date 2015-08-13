@@ -168,7 +168,8 @@ The following steps must be executed every time you purge and/or delete the
 
         cd public && git init
 
-3. Set the origin of the public repo to point to your remote repository on Github:
+3. Set the origin of the public repo to point to your remote repository on
+   Github (where your web site is hosted):
 
         git remote add origin <URI>
 
