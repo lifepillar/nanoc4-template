@@ -75,6 +75,16 @@ checks:
     exclude: []
 
 
+# Deployment
+
+deploy:
+  default:
+    kind: git
+    remote: origin
+    branch: gh-pages
+    forced: true
+
+
 # Site-specific metadata
 
 base_url: http://nanoc4-template.static.localhost
