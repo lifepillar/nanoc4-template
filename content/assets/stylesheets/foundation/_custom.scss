@@ -43,12 +43,12 @@ div#blog-content-wrapper {
 
 div#title-wrapper {
   @include small-column(12);
-  @include large-column(6);
+  @include large-column(7);
 }
 
 div#menu-wrapper {
   @include small-column(12);
-  @include large-column(6);
+  @include large-column(5);
 }
 
 div#banner-wrapper {
@@ -127,6 +127,9 @@ div#blog-index {
 
 nav {
   float: right;
+  & > ul {
+    white-space: nowrap;
+  }
 }
 
 #menu-wrapper ul {
