@@ -140,7 +140,7 @@ use by modifying the corresponding files in
 These instructions assume that you have created a `gh-pages` branch in your repo
 on Github as per Github documentation.
 
-**Note:** in order for links to work properly on Github pages, you should apply
+**Note:** in order for links to work properly on Github pages, you may need to apply
 Nanoc's `:relativize_paths` filter to the generated content.
 
 #### Setup
