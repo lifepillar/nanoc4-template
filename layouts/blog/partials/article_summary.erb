@@ -3,7 +3,7 @@
 
   <%= render '/blog/partials/posted_on.*' %>
 
-  <%= Nanoc::Filters::Kramdown.new.run summary(@item) %>
+  <%= summary(@item) %>
 
   <p class="readmore"><%= link_to 'Read more &rarr;', @item.path, :class => 'secondary button radius' %></p>
 

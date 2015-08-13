@@ -9,17 +9,16 @@ module BloggingExtensions
     end.sort.reverse
   end
 
-  # Returns the summary for an item (typically, a blog post).
-  # The summary is determined as follows: if the item has an 'excerpt' attribute
-  # in the frontmatter, the value of that attribute is interpreted as Markdown and
-  # used; otherwise, if the
-  # item has a '<!-- more -->' separator, the text before the separator is
-  # returned; otherwise, the empty string is returned.
+  # Returns the summary for an item (typically, a blog post). The summary is
+  # determined as follows: if the item has an 'excerpt' attribute in the
+  # frontmatter, the value of that attribute is used; otherwise, if the item
+  # has a '<!-- more -->' separator, the text before the separator is returned;
+  # otherwise, the empty string is returned.
   #
   # NOTE: this may not work if a filter that strips HTML comments is used
   # (in such a case, the excerpt attribute should be used).
   def summary(article)
-    return article[:excerpt] if article.key?(:excerpt)
+    return '<p>' + article[:excerpt] + '</p>' if article.key?(:excerpt)
     content = article.compiled_content(:snapshot => :pre)
     if content =~ /\s<!-- more -->\s/
       return content.partition('<!-- more -->').first
