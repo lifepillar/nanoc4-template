@@ -1,7 +1,0 @@
----
-title: My Blog
----
-
-<% sorted_articles.each do |post| %>
-  <%= render '/blog/article_summary', :item => post, :content => post.compiled_content %>
-<% end %>

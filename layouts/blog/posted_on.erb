@@ -1,4 +1,0 @@
-<h6>
-  Posted on <time datetime="<%= @item[:created_at].strftime('%Y-%m-%d') %>"><%= @item[:created_at].strftime('%B %d, %Y %l:%M %p %Z') %></time>
-  by <a href="<%= @item[:author_uri] || @config[:blog][:author_uri] %>"><%= @item[:author_name] || @config[:blog][:author_name] %></a>
-</h6>
