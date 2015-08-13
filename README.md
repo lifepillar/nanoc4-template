@@ -187,7 +187,7 @@ The following steps must be executed every time you purge and/or delete the
 
 #### Publishing
 
-The following commands must be executed in your project's root folder every time
+The following commands should be executed in your project's root folder every time
 you want to deploy a new version of your site:
 
 1. Remove the `tmp` folder (optional but recommended):
