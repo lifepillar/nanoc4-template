@@ -37,7 +37,8 @@ div#about-wrapper,
 div#work-wrapper,
 div#footer-wrapper,
 div#blog-header-wrapper,
-div#blog-content-wrapper {
+div#blog-content-wrapper,
+div#sample-wrapper {
   @include grid-row;
 }
 
@@ -97,6 +98,11 @@ div#blog-index {
   @include small-column(12);
   @include large-column(4);
 }
+
+div#sample-notice {
+  @include grid-column(12);
+}
+
 
 // Styling
 #about-wrapper,
