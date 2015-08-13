@@ -158,11 +158,14 @@ The following steps must be executed every time you purge and/or delete the
 
         git remote add origin <URI>
 
+   Note that this origin is totally independent of the origin of your project's repo
+   (it may be the same or be different).
+
 4. Create a local `gh-pages` branch in the public repo:
 
         git checkout -b gh-pages
 
-5. Create at least one commit:
+5. Create at least one commit in the public repo:
 
         git add -A
         git commit "Initial commit."
