@@ -135,6 +135,20 @@ use by modifying the corresponding files in
 `content/assets/stylesheets/bootstrap/_custom.scss`.
 
 
+### Placeholder content
+
+The file `lib/helpers/lorem.rb` contains a few functions to put placeholder text
+and images for quick prototyping. For example:
+
+- `Lorem.paragraphs(n)`: generates `n` paragraphs of random text.
+- `Lorem.sentences(n)`: generates a string consisting of `n` random sentences.
+- `Lorem.words(n)`: generates a string of `n` random words.
+- `Lorem.image(size, options)`: generates a placeholder image, by default using
+  [placehold.it](http://www.placehold.it).
+
+Refer to the source code for a complete list and to the sample code for some
+examples of usage.
+
 ### How to deploy to Github Pages
 
 These instructions assume that you have created a `gh-pages` branch in your repo
@@ -184,29 +198,14 @@ you want to deploy a new version of your site:
 
         NANOC_ENV=production bundle exec nanoc
 
-3. (Optional, but recommended) Preview your site and perform checks:
+3. (Optional, but recommended) Perform checks and preview your site:
 
-        bundle exec nanoc view
         bundle exec nanoc check --all
+        bundle exec nanoc view
 
 4. Deploy to Github pages (this assumes the default configuration of this
   template):
 
         bundle exec nanoc deploy -n
         bundle exec nanoc deploy
-
-
-### Placeholder content
-
-The file `lib/helpers/lorem.rb` contains a few functions to put placeholder text
-and images for quick prototyping. For example:
-
-- `Lorem.paragraphs(n)`: generates `n` paragraphs of random text.
-- `Lorem.sentences(n)`: generates a string consisting of `n` random sentences.
-- `Lorem.words(n)`: generates a string of `n` random words.
-- `Lorem.image(size, options)`: generates a placeholder image, by default using
-  [placehold.it](http://www.placehold.it).
-
-Refer to the source code for a complete list and to the sample code for some
-examples of usage.
 
