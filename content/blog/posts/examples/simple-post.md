@@ -1,11 +1,3 @@
----
-title: Simple Post
-created_at: 2014-3-25 12:30 UTC
-author_name: Myself
-author_uri: mailto:github@lifepillar.com
-tags:  [example, test]
----
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
 Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec
 consectetur ante hendrerit. Donec et mollis dolor.

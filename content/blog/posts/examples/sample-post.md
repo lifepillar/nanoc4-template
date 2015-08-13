@@ -1,13 +1,3 @@
----
-title:      Sample Post
-kind:       article
-created_at: 2014-1-19 09:31 UTC
-updated_at: 2014-1-20 11:45 UTC
-tags:       [example, mathematical]
-head:       [pygments,mathjax]
-excerpt:    A sample post, with <em>code</em> and <em>math</em>.
----
-
 What follows contains an excerpt from D. Knuth's _The Art of Computer Programming_.
 
 Algorithm E from Knuth's book, expressed in Ruby:
