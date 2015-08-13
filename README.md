@@ -66,7 +66,8 @@ Point your browser to `http://localhost:3000`.
 Modify the site's metadata and deployment settings in `nanoc.yaml`. Edit or
 replace `content/index.erb`. You may also want to remove
 `content/blog/posts/examples`. You may delete the whole `content/blog` and
-`layouts/blog` folders if you do not need a blog.
+`layouts/blog` folders if you do not need a blog. You should also change the
+favicon (`content/assets/images/favicon/png`).
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
 and `endbody` to load additional partials, just before the `</head>` tag, just
