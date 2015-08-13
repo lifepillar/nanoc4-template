@@ -141,7 +141,7 @@ module Lorem
       src << "/#{background_color.sub(/^#/, '')}" if background_color
       src << "/ccc" if background_color.nil? && color
       src << "/#{color.sub(/^#/, '')}" if color
-      src << "&amp;text=#{html_escape(options[:text]).gsub(/\s+/,'+')}" if options[:text]
+      src << "?text=#{html_escape(options[:text]).gsub(/\s+/,'+')}" if options[:text]
     end
 
     # Return a placeholder image using placekitten.com
