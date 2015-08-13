@@ -6,6 +6,8 @@ gem 'compass'         # For Sass/Compass
 gem 'kramdown'        # For :kramdown filter
 gem 'nokogiri'        # For nanoc check and :relativize_paths filter
 gem 'nanoc',          # Nanoc 4
+    :git => 'git://github.com/nanoc/nanoc.git'
+gem 'nanoc-git',      # Git deployer
     :git => 'git://github.com/nanoc/nanoc-git.git',
     :branch => 'nanoc4'
 gem 'nanoc-external', # :external filter
