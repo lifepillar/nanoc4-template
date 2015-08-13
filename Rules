@@ -58,6 +58,7 @@ ignore '/assets/stylesheets/**/_*'
 
 compile '/assets/stylesheets/**/*' do
   filter :compass, config_file: 'compass_config.rb'
+  filter :relativize_paths, :type => :css
 end
 
 route '/assets/stylesheets/**/*' do
@@ -106,7 +107,7 @@ end
 compile '/blog/index.erb' do
   filter :erb
   layout '/blog/default.*'
-  #filter :relativize_paths, :type => :html
+  filter :relativize_paths, :type => :html
   filter :html5small if ENV['NANOC_ENV'] == 'production'
 end
 
@@ -119,7 +120,7 @@ end
 
 compile '/blog/feed.erb' do
   filter :erb
-  #filter :relativize_paths, :type => :html
+  filter :relativize_paths, :type => :html
 end
 
 route '/blog/feed.erb' do
@@ -131,6 +132,7 @@ end
 
 compile '/blog/{archives,tags}/**/*' do
   filter :erb
+  filter :relativize_paths, :type => :html
   filter :html5small if ENV['NANOC_ENV'] == 'production'
 end
 
@@ -154,7 +156,7 @@ compile '/blog/posts/**/*.{md,mmd}' do
          :default_colorizer => :pygmentize,
          :pygmentize => { :nowrap => 'True' }
   layout '/blog/article.*'
-  #filter :relativize_paths, :type => :html
+  filter :relativize_paths, :type => :html
   filter :html5small if ENV['NANOC_ENV'] == 'production'
 end
 
@@ -175,11 +177,13 @@ passthrough '/robots.txt'
 compile '/**/*.erb' do
   filter :erb
   layout '/default.*'
+  filter :relativize_paths, :type => :html
   filter :html5small if ENV['NANOC_ENV'] == 'production'
 end
 
 compile '/**/*.html' do
   layout '/default.*'
+  filter :relativize_paths, :type => :html
   filter :html5small if ENV['NANOC_ENV'] == 'production'
 end
 
