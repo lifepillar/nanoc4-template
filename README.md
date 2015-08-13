@@ -99,6 +99,7 @@ To build a production version of your site, delete the `tmp` folder and set the
 
     NANOC_ENV=production bundle exec nanoc
 
+
 ### Using Foundation
 
 By default, this template uses [Zurb Foundation](http://foundation.zurb.com).
@@ -132,6 +133,61 @@ You may override Bootstrap variables and choose which Bootstrap components to
 use by modifying the corresponding files in
 `content/assets/stylesheets/bootstrap`. You may define your own styles in
 `content/assets/stylesheets/bootstrap/_custom.scss`.
+
+
+### How to deploy to Github Pages
+
+These instructions assume that you have created a `gh-pages` branch in your repo
+on Github as per Github documentation.
+
+#### Setup
+
+The following steps must be executed every time you purge and/or delete the
+`public` folder:
+
+1. Build your web site at least once to create the `public` folder.
+
+2. Initialize a Git repo in the `public` folder:
+
+        cd public && git init
+
+3. Set the origin of the public repo to point to your remote repository on Github:
+
+        git remote add origin <URI>
+
+4. Create a local `gh-pages` branch in the public repo:
+
+        git checkout -b gh-pages
+
+5. Create at least one commit:
+
+        git add -A
+        git commit "Initial commit."
+
+
+#### Publishing
+
+The following commands must be executed in your project's root folder every time
+you want to deploy a new version of your site:
+
+1. Remove the `tmp` folder (optional but recommended):
+
+        rm -fr tmp
+
+2. Build a production version of your site:
+
+        NANOC_ENV=production bundle exec nanoc
+
+3. (Optional, but recommended) Preview your site and perform checks:
+
+        bundle exec nanoc view
+        bundle exec nanoc check --all
+
+4. Deploy to Github pages (this assumes the default configuration of this
+  template):
+
+        bundle exec nanoc deploy -n
+        bundle exec nanoc deploy
 
 
 ### Placeholder content
