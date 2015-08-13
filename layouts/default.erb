@@ -18,7 +18,6 @@
   </head>
 
   <body>
-    <%= render "/partials/sample.*" %> <!-- REMOVE ME -->
 
     <% for p in @item.fetch(:beginbody, []) %>
       <%= render "/partials/#{p}.*" %>
