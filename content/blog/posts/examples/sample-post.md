@@ -16,7 +16,7 @@ def algorithm_E(m, n)
 end
 ~~~
 
->Algorithm E may, for example, be formalized […] as follows:
+>Algorithm E may, for example, be formalized \[…\] as follows:
 >Let \\(Q\\) <!-- \( \) must be escaped in Markdown. -->
 >be the set of all singletons $(n)$, all ordered pairs $(m,n)$,
 >and all ordered quadruples $(m,n,r,1)$, $(m,n,r,2)$, and $(m,n,p,3)$,
