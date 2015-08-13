@@ -1,0 +1,7 @@
+<% render '/blog/default.*' do %>
+  <h2><%= @item[:title] %></h2>
+  <% BloggingExtensions::items_for_period(sorted_articles(), @item[:year], @item[:month]).each do |post| %>
+    <%= render '/blog/partials/article_summary.*', :item => post %>
+  <% end %>
+<% end %>
+

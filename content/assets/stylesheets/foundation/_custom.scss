@@ -1,0 +1,182 @@
+// Put you custom styles here
+
+// small-column and large-column can be used together instead of grid-column.
+@mixin small-column($columns,
+                    $last-column: false,
+                    $center: false,
+                    $offset: false,
+                    $push: false,
+                    $pull: false,
+                    $collapse: false,
+                    $float: left)
+{
+  @media #{$small-only} {
+    @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+  }
+}
+
+@mixin large-column($columns,
+                    $last-column: false,
+                    $center: false,
+                    $offset: false,
+                    $push: false,
+                    $pull: false,
+                    $collapse: false,
+                    $float: left)
+{
+  @media #{$medium-up} {
+    @include grid-column($columns, $last-column, $center, $offset, $push, $pull, $collapse, $float);
+  }
+}
+
+
+// The grid
+
+div#header-wrapper,
+div#about-wrapper,
+div#work-wrapper,
+div#footer-wrapper,
+div#blog-header-wrapper,
+div#blog-content-wrapper {
+  @include grid-row;
+}
+
+div#title-wrapper {
+  @include small-column(12);
+  @include large-column(7);
+}
+
+div#menu-wrapper {
+  @include small-column(12);
+  @include large-column(5);
+}
+
+div#banner-wrapper {
+  @include grid-column(12);
+}
+
+div#info {
+  @include small-column(12);
+  @include large-column(8);
+}
+
+div#photo {
+  @include small-column(12);
+  @include large-column(4);
+}
+
+div#tagline {
+  @include grid-column(12);
+}
+
+div.work-img {
+  @include small-column(6);
+  @include large-column(3);
+}
+
+div#copyright {
+  @include grid-column(8);
+}
+div#social-links {
+  @include grid-column(4);
+}
+
+div.feed {
+  @include grid-column(12);
+  & > a {
+    float: right !important;
+  }
+}
+
+div#post-summaries {
+  @include small-column(12);
+  @include large-column(8);
+}
+
+div#blog-index {
+  @include small-column(12);
+  @include large-column(4);
+}
+
+// Styling
+#about-wrapper,
+#work-wrapper,
+#footer-wrapper,
+#blog-content-wrapper {
+  border-top-width: $hr-border-width;
+  border-top-style: $hr-border-style;
+  border-top-color: $hr-border-color;
+}
+
+#header-wrapper, #about-wrapper {
+  padding-bottom: $hr-margin;
+}
+
+#about-wrapper,
+#work-wrapper,
+#footer-wrapper,
+#blog-content-wrapper {
+  padding-top: $hr-margin;
+}
+
+.logo {
+  @extend .fa;
+  @extend .fa-black-tie;
+  @extend .fa-fw;
+}
+
+nav {
+  float: right;
+  & > ul {
+    white-space: nowrap;
+  }
+}
+
+#menu-wrapper ul {
+  @include button-group-container();
+  .menu-item {
+    @include button();
+  }
+  & > li {
+    @include button-group-style();
+  }
+}
+
+.work-description {
+  @include panel();
+}
+
+#social-links > ul {
+  @include inline-list;
+  float: right;
+}
+
+aside.posted-datetime {
+  margin-bottom: rem-calc(20);
+}
+
+span.github {
+  @extend .fa;
+  @extend .fa-github;
+  @extend .fa-2x;
+}
+
+span.twitter {
+  @extend .fa;
+  @extend .fa-twitter;
+  @extend .fa-2x;
+}
+
+span.feed {
+  @extend .fa;
+  @extend .fa-rss-square;
+  @extend .fa-lg;
+}
+
+pre {
+  margin-bottom: $paragraph-margin-bottom;
+  & code {
+    background-color: inherit;
+  }
+}
+

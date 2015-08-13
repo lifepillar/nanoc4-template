@@ -1,0 +1,211 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+preprocess do
+  @config[:production] = !ENV['NANOC_ENV'].nil? && ENV['NANOC_ENV'] == 'production' # See https://github.com/nanoc/nanoc/issues/487
+  @config[:compress_html] = @config[:production] && system("which htmlcompressor >/dev/null 2>&1")
+
+  # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
+  # Assume all items inside /blog are blog articles unless otherwise specified.
+  @items.select { |item| item.identifier.to_s =~ %r{^/blog/posts/.+} }.each do |item|
+    item[:kind] ||= 'article' # Required by Nanoc::Helpers::Blogging
+  end
+
+  # Assign a date to all items (not only blog posts) unless they have it already defined.
+  @items.each do |item|
+    if item.key?(:created_at)
+      item[:created_at] = attribute_to_time(item[:created_at])
+    else
+      item[:created_at] = Time.now
+    end
+    if item.key?(:updated_at)
+      item[:updated_at] = attribute_to_time(item[:updated_at])
+    end
+  end
+
+  # Build tag pages for blog posts
+  build_tag_pages(articles())
+
+  # Build yearly and monthly archives of blog posts
+  build_archives(articles())
+end
+
+
+# Aggregated Javascript scripts
+
+compile '/assets/scripts/*.js.erb' do
+  filter :erb
+  filter :uglify_js if @config[:production]
+end
+
+route '/assets/scripts/*.js.erb' do
+  '/js/' + File.basename(@item.identifier.without_ext)
+end
+
+
+# Other JavaScript scripts
+
+compile '/assets/scripts/*.js' do
+  filter :uglify_js if @config[:production]
+end
+
+route '/assets/scripts/*.js' do
+  '/js/' + File.basename(@item.identifier.to_s)
+end
+
+
+# Stylesheets
+
+ignore '/assets/stylesheets/**/_*'
+
+compile '/assets/stylesheets/**/*' do
+  filter :sass, Compass.sass_engine_options
+end
+
+route '/assets/stylesheets/**/*' do
+  '/css/' + File.basename(@item.identifier.with_ext('css'))
+end
+
+
+# Favicon and images
+
+route '/assets/images/favicon.*' do
+  '/' + File.basename(@item.identifier.to_s)
+end
+
+route '/assets/images/*' do
+  '/images/' + File.basename(@item.identifier.to_s)
+end
+
+
+# Fonts
+
+route '/assets/components/bootstrap-sass/assets/fonts/**/*' do
+  '/fonts/bootstrap/' + File.basename(@item.identifier.to_s)
+end
+
+route '/assets/components/fontawesome/fonts/**/*' do
+  '/fonts/' + File.basename(@item.identifier.to_s)
+end
+
+ignore '/assets/components/**/*'
+
+
+# Sitemap
+
+compile '/sitemap.erb' do
+  filter :erb
+end
+
+route '/sitemap.erb' do
+  '/sitemap.xml'
+end
+
+
+# Blog index
+
+compile '/blog/index.erb' do
+  filter :erb
+  layout '/blog/default.*'
+  #filter :relativize_paths, :type => :html
+  filter :htmlcompressor if @config[:compress_html]
+end
+
+route '/blog/index.erb' do
+  item.identifier.with_ext('html')
+end
+
+
+# Blog feed
+
+compile '/blog/feed.erb' do
+  filter :erb
+  #filter :relativize_paths, :type => :html
+end
+
+route '/blog/feed.erb' do
+  '/blog/feed.xml'
+end
+
+
+# Blog tags and archives (items generated during preprocessing)
+
+compile '/blog/{archives,tags}/**/*' do
+  filter :erb
+  filter :htmlcompressor if @config[:compress_html]
+end
+
+route '/blog/{archives,tags}/**/*' do
+  @item.identifier.without_ext + '/index.html'
+end
+
+
+# Blog posts
+
+compile '/blog/posts/**/*.{md,mmd}' do
+  if 'mmd' == @item[:extension]
+    filter :markdown_code_fence_colorize_adapter # Change ```lang to ```language-lang
+    filter :external,
+           :exec => 'multimarkdown',
+           :options => %w(--accept --mask --labels --smart)
+  else # assume Markdown
+    filter :kramdown, :syntax_highlighter => nil
+  end
+  filter :colorize_syntax,
+         :default_colorizer => :pygmentize,
+         :pygmentize => { :nowrap => 'True' }
+  layout '/blog/article.*'
+  #filter :relativize_paths, :type => :html
+  filter :htmlcompressor if @config[:compress_html]
+end
+
+route '/blog/posts/**/*' do
+  d = attribute_to_time @item[:created_at]
+  "/blog/#{d.year}/#{d.month}/#{d.day}/#{File.basename(@item.identifier.without_ext)}/index.html"
+end
+
+
+# Passthrough
+
+passthrough '/humans.txt'
+passthrough '/robots.txt'
+
+
+# HTML, ERB and Markdown files
+
+compile '/**/*.erb' do
+  filter :erb
+  layout '/default.*'
+  filter :htmlcompressor if @config[:compress_html]
+end
+
+compile '/**/*.html' do
+  layout '/default.*'
+  filter :htmlcompressor if @config[:compress_html]
+end
+
+compile '/**/*' do
+end
+
+route '/404.html' do
+  item.identifier.to_s
+end
+
+route '/**/*.{erb,html,md,mmd}' do
+  if item.identifier =~ '/index.*'
+    '/index.html'
+  else
+    item.identifier.without_ext + '/index.html'
+  end
+end
+
+route '/**/*' do
+  item.identifier.to_s
+end
+
+
+# Filter all layouts through erb
+
+layout '/**/*', :erb
+

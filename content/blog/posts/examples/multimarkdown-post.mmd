@@ -1,0 +1,41 @@
+The source code of this post is written in MultiMarkdown.
+
+<!-- more -->
+
+In nanoc, you may use the `nanoc-external` filter to process
+MultiMarkdown documents:
+
+```ruby
+filter :external, :exec => 'multimarkdown',
+       :options => %w(--accept --mask --labels --smart)
+```
+
+MultiMarkdown {~~cannot~>can~~} process [CriticMarkup][]:
+View the source code of this post!{>>This is a comment<<}
+
+[CriticMarkup]: http://criticmarkup.com "CriticMarkup" class=external
+
+Here is some text containing a footnote [^somesamplefootnote].
+
+[^somesamplefootnote]: Here is the text of the footnote itself.
+
+A table:
+
+|             |          Grouping           ||
+First Header  | Second Header | Third Header |
+ ------------ | :-----------: | -----------: |
+Content       |          *Long Cell*        ||
+Content       |   **Cell**    |         Cell |
+
+New section   |     More      |         Data |
+And more      | With an escaped '\|'         ||
+[Prototype table]
+
+An example of math within a paragraph --- \\({e}^{i\pi }+1=0\\)
+--- easy enough.
+
+And an equation on it's own:
+
+\\[ {x}_{1,2}=\frac{-b\pm \sqrt{{b}^{2}-4ac}}{2a} \\]
+
+That's it.
