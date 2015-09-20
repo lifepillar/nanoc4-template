@@ -64,7 +64,7 @@ compile '/assets/stylesheets/**/*' do
 end
 
 route '/assets/stylesheets/**/*' do
-  '/css/' + File.basename(@item.identifier.with_ext('css'))
+  '/css/' + File.basename(@item.identifier.without_ext + '.css')
 end
 
 
@@ -113,7 +113,7 @@ compile '/blog/index.erb' do
 end
 
 route '/blog/index.erb' do
-  item.identifier.with_ext('html')
+  item.identifier.without_ext + '.html'
 end
 
 
