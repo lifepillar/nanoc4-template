@@ -3,7 +3,6 @@
   "dependencies": {
     "foundation": null,
     "fontawesome": null,
-    "bootstrap-sass": null,
-    "modernizr": null
+    "bootstrap-sass": null
   }
 }

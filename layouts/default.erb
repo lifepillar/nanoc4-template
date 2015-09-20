@@ -9,7 +9,6 @@
     <title><%= @config[:site][:name] + (@item[:title] ? ' - ' + @item[:title] : '') %></title>
     <link href="/favicon.png" rel="icon" type="image/png">
     <link rel="stylesheet" href="/css/main.css">
-    <script src="/js/modernizr.js"></script>
 
     <% for p in @item.fetch(:head, []) %>
       <%= render "/partials/#{p}.*" %>
