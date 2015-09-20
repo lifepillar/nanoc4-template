@@ -49,6 +49,15 @@ really essential to use this template. If you don't use Bower, you may delete
 `bower.json` and `.bowerrc`.
 
 
+## A note about Modernizr
+
+If you want to add [Modernizr](http://modernizr.com/), the simplest way is to
+make your own custom build and put the resulting `modernizr.js` inside
+`content/assets/scripts`. You may also
+[dynamically create a custom package](https://github.com/Modernizr/Modernizr/issues/1656)
+and install via Bower.
+
+
 ## Quickstart
 
     git clone git://github.com/lifepillar/nanoc4-template
