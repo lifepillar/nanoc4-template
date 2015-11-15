@@ -4,7 +4,6 @@ require 'date'
 
 preprocess do
   @config[:production] = !ENV['NANOC_ENV'].nil? && ENV['NANOC_ENV'] == 'production' # See https://github.com/nanoc/nanoc/issues/487
-  @config[:compress_html] = @config[:production] && system("which htmlcompressor >/dev/null 2>&1")
 
   # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
   # Assume all items inside /blog are blog articles unless otherwise specified.
@@ -109,7 +108,7 @@ compile '/blog/index.erb' do
   filter :erb
   layout '/blog/default.*'
   #filter :relativize_paths, :type => :html
-  filter :htmlcompressor if @config[:compress_html]
+  filter :html5small if @config[:production]
 end
 
 route '/blog/index.erb' do
@@ -133,7 +132,7 @@ end
 
 compile '/blog/{archives,tags}/**/*' do
   filter :erb
-  filter :htmlcompressor if @config[:compress_html]
+  filter :html5small if @config[:production]
 end
 
 route '/blog/{archives,tags}/**/*' do
@@ -157,7 +156,7 @@ compile '/blog/posts/**/*.{md,mmd}' do
          :pygmentize => { :nowrap => 'True' }
   layout '/blog/article.*'
   #filter :relativize_paths, :type => :html
-  filter :htmlcompressor if @config[:compress_html]
+  filter :html5small if @config[:production]
 end
 
 route '/blog/posts/**/*' do
@@ -177,12 +176,12 @@ passthrough '/robots.txt'
 compile '/**/*.erb' do
   filter :erb
   layout '/default.*'
-  filter :htmlcompressor if @config[:compress_html]
+  filter :html5small if @config[:production]
 end
 
 compile '/**/*.html' do
   layout '/default.*'
-  filter :htmlcompressor if @config[:compress_html]
+  filter :html5small if @config[:production]
 end
 
 compile '/**/*' do
