@@ -33,14 +33,13 @@ template.
 
 ## Requirements
 
-- Nanoc 4.0.0 or later.
+- [Nanoc](http://nanoc) 4.0.0 or later.
 - [Bundler](http://bundler.io/).
+
+Optional:
+
 - [Bower](http://bower.io/).
-
-Optional, but recommended:
-
 - [Multimarkdown](http://fletcherpenney.net/multimarkdown/).
-- [HtmlCompressor](https://code.google.com/p/htmlcompressor/).
 
 Bower is used to install libraries and frameworks (jQuery, Foundation,
 Bootstrap, Font Awesome, …) into `content/assets/components`. You may use any
