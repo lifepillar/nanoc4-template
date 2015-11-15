@@ -195,7 +195,7 @@ The following steps must be executed every time you purge and/or delete the
 5. Create at least one commit in the `gh-pages` branch:
 
         git add -A
-        git commit "Initial commit."
+        git commit -m "Initial commit."
 
 
 #### Publishing
