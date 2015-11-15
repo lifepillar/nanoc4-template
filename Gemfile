@@ -5,14 +5,12 @@ gem 'builder'         # For the sitemap
 gem 'compass'         # For Sass/Compass
 gem 'kramdown'        # For :kramdown filter
 gem 'nokogiri'        # For nanoc check and :relativize_paths filter
-gem 'nanoc',          # Nanoc 4
-    :git => 'git://github.com/nanoc/nanoc.git'
+gem 'nanoc', '>=4.0'  # Nanoc 4
 gem 'nanoc-git',      # Git deployer
     :git => 'git://github.com/nanoc/nanoc-git.git',
-    :branch => 'nanoc4'
+    :branch => 'master'
 gem 'nanoc-external', # :external filter
-    :git => 'git://github.com/nanoc/nanoc-external.git',
-    :branch => 'nanoc4'
+    '>=1.0.1'
 gem 'pry'             # For nanoc shell
 gem 'pygmentize'      # For syntax coloring
 gem 'uglifier'        # For :uglify_js filter

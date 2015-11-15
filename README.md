@@ -33,7 +33,7 @@ template.
 
 ## Requirements
 
-- Nanoc 4.0.0rc2 or later.
+- Nanoc 4.0.0 or later.
 - [Bundler](http://bundler.io/).
 - [Bower](http://bower.io/).
 
