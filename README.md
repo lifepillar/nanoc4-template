@@ -108,17 +108,16 @@ examples of usage.
 
 ## Deploying your site
 
-To build a production version of your site, set the `NANOC_ENV` environment
-variable:
+To build a production version of your site, use:
 
-    NANOC_ENV=production bundle exec nanoc
+    bundle exec nanoc --env=production
 
 In the production version of your site, HTML, JavaScript and CSS files are
 minified (CSS files are minified by Compass: if you do not want to use Compass,
-Nanoc provides the `:yui_compressor` filter for minification).
+Nanoc provides the `:yui_compressor` filter).
 
 This template is configured to deploy your site on GitHub Pages. See [Deploying
-Nanoc sites](http://nanoc.ws/doc/deploying/) for the details.
+Nanoc sites](http://nanoc.ws/doc/deploying/) for further details.
 
 **Note:** depending on how you have configured your `base_url`, you may need to
 apply Nanoc's `:relativize_paths` filter to the generated content.
