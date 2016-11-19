@@ -112,10 +112,15 @@ feed:
 github_url: https://github.com/lifepillar/
 twitter_url: https://twitter.com/lifepillar
 
-google_analytics:
-  code: UA-XXXX-Y
-  site: mysite.org
+# Settings specific to production environment
+environments:
+  production:
 
-disqus:
-  shortname: REPLACE-ME
+    base_url: https://mysite.com
 
+    google_analytics:
+      code: UA-XXXX-Y
+      site: mysite.org
+
+    disqus:
+      shortname: REPLACE-ME
