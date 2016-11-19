@@ -27,7 +27,7 @@ With this template, you may:
 
 ## Requirements
 
-- [Nanoc](http://nanoc) 4.0.0 or later.
+- [Nanoc](http://nanoc) 4.4.0 or later.
 
 Optional:
 
@@ -120,5 +120,5 @@ Nanoc provides the `:yui_compressor` filter for minification).
 This template is configured to deploy your site on GitHub Pages. See [Deploying
 Nanoc sites](http://nanoc.ws/doc/deploying/) for the details.
 
-**Note:** in order for links to work properly on GitHub pages, you may need to
+**Note:** depending on how you have configured your `base_url`, you may need to
 apply Nanoc's `:relativize_paths` filter to the generated content.
