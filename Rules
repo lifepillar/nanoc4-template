@@ -59,7 +59,7 @@ end
 ignore '/assets/stylesheets/**/_*'
 
 compile '/assets/stylesheets/**/*' do
-  filter :sass, Compass.sass_engine_options
+  filter :compass, config_file: 'compass_config.rb'
 end
 
 route '/assets/stylesheets/**/*' do
