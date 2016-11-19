@@ -56,7 +56,7 @@ Point your browser to `http://localhost:3000`.
 4. If you do not plan to use Compass, you may delete `compass_config.rb`. Do not
    forget to update the corresponding compilation rule in `Rules`, too (search
    for `filter :compass`).
-5. Change the favicon (`content/assets/images/favicon.png`).
+5. Replace the favicon (`content/assets/images/favicon.png`).
 6. Put JavaScript scripts into `content/assets/scripts`. If you want to
    aggregate some scripts, put them somewhere inside `content/assets/component`
    instead, and add their path to the array in `all.js.erb`.
