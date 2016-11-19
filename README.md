@@ -22,17 +22,18 @@ With this template, you may:
   Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/),
   [Disqus](http://disqus.com/), [MathJax](http://www.mathjax.org/) and user
   defined snippets to a page by editing a page's frontmatter;
-- deploy via Git to Github Pages or other hosts.
+- deploy via Git to GitHub Pages or other hosts.
 
 
 ## Requirements
 
 - [Nanoc](http://nanoc) 4.0.0 or later.
-- [Bundler](http://bundler.io/).
 
 Optional:
 
-- [Multimarkdown](http://fletcherpenney.net/multimarkdown/).
+- [Bundler](http://bundler.io/) (recommended).
+- [Multimarkdown](http://fletcherpenney.net/multimarkdown/) (only if you write
+  content in Multimarkdown).
 
 
 ## Quickstart
@@ -57,21 +58,23 @@ Point your browser to `http://localhost:3000`.
    for `filter :compass`).
 5. Change the favicon (`content/assets/images/favicon.png`).
 6. Put JavaScript scripts into `content/assets/scripts`. If you want to
-   aggregate scripts, put them somewhere inside the `components` folder instead,
-   and add their path to the array in `main.js.erb`.
+   aggregate some scripts, put them somewhere inside `content/assets/component`
+   instead, and add their path to the array in `all.js.erb`.
 7. Put (S)CSS files in `content/assets/stylesheets`. If you use Compass,
    additional paths to stylesheets may be added in `compass_config.rb`. Files
    whose name starts with an underscore are not copied to the output: you may
    import them in `main.scss` to get a single aggregated CSS file in the output.
 8. Put additional components, libraries or frameworks into
-   `content/assets/components`. Update `all.js.erb` and `main.scss` to include
-   the necessary files.
+   `content/assets/components`. Update `compass_config.rb`, `all.js.erb` and
+   `main.scss` to include the necessary files.
 
 
 ## Editing content
 
-The site's content goes into the `content` folder. Blog posts go anywhere
-under `blog/posts`.
+The site's content goes into the `content` folder. Blog posts go anywhere under
+`content/blog/posts`. Content written in HTML, ERB or (Multi)Markdown is
+processed according to predefined rules. For content in other formats, you have
+to define your own rules.
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
 and `endbody` to load additional partials, just before the `</head>` tag, just
@@ -105,13 +108,17 @@ examples of usage.
 
 ## Deploying your site
 
-To build a production version of your site, delete the `tmp` folder and set the
-`NANOC_ENV` environment variable:
+To build a production version of your site, set the `NANOC_ENV` environment
+variable:
 
     NANOC_ENV=production bundle exec nanoc
+
+In the production version of your site, HTML, JavaScript and CSS files are
+minified (CSS files are minified by Compass: if you do not want to use Compass,
+Nanoc provides the `:yui_compressor` filter for minification).
 
 This template is configured to deploy your site on GitHub Pages. See [Deploying
 Nanoc sites](http://nanoc.ws/doc/deploying/) for the details.
 
-**Note:** in order for links to work properly on Github pages, you may need to
+**Note:** in order for links to work properly on GitHub pages, you may need to
 apply Nanoc's `:relativize_paths` filter to the generated content.
