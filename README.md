@@ -4,20 +4,18 @@ This is a starting point for a web site built with [Nanoc 4](http://nanoc.ws/).
 
 Features:
 
-- extends Nanoc helpers and provides templates to fully support blogs! Including
-  feeds, archives, tags, etc…
+- extends Nanoc helpers and provides templates to **fully support blogs**,
+  including feeds, archives, tags, etc…
 - works with [Compass](http://compass-style.org) out of the box;
 - builds development/production version of your site;
 - aggregates JavaScript and CSS files, and minifies JavaScript, CSS and HTML;
-- includes [Font Awesome](http://fontawesome.io) Sass files by default.
 - provides helper functions for placeholder text and images;
-- adds syntax highlighting using [Pygments](http://pygments.org).
+- adds syntax highlighting using [Pygments](http://pygments.org);
+- web framework agnostic (use it with [Zurb Foundation](http://foundation.zurb.com),
+  [Bootstrap](http://getbootstrap.com), etc…, or with no framework at all).
 
 With this template, you may:
 
-- choose between [Zurb Foundation](http://foundation.zurb.com) and [Bootstrap
-  Sass](https://github.com/twbs/bootstrap-sass) (or use your own framework or no
-  framework at all);
 - write your posts in Markdown or
   [Multimarkdown](http://fletcherpenney.net/multimarkdown/);
 - easily add [Google
@@ -25,10 +23,6 @@ With this template, you may:
   [Disqus](http://disqus.com/), [MathJax](http://www.mathjax.org/) and user
   defined snippets to a page by editing a page's frontmatter;
 - deploy via Git to Github Pages or other hosts.
-
-Take a look at the [sample
-content](http://lifepillar.github.io/nanoc4-template/) that comes with this
-template.
 
 
 ## Requirements
@@ -38,23 +32,7 @@ template.
 
 Optional:
 
-- [Bower](http://bower.io/).
 - [Multimarkdown](http://fletcherpenney.net/multimarkdown/).
-
-Bower is used to install libraries and frameworks (jQuery, Foundation,
-Bootstrap, Font Awesome, …) into `content/assets/components`. You may use any
-other method (including dropping folders manually or using a CDN): Bower is not
-really essential to use this template. If you don't use Bower, you may delete
-`bower.json` and `.bowerrc`.
-
-
-## A note about Modernizr
-
-If you want to add [Modernizr](http://modernizr.com/), the simplest way is to
-make your own custom build and put the resulting `modernizr.js` inside
-`content/assets/scripts`. You may also
-[dynamically create a custom package](https://github.com/Modernizr/Modernizr/issues/1656)
-and install via Bower.
 
 
 ## Quickstart
@@ -62,7 +40,6 @@ and install via Bower.
     git clone git://github.com/lifepillar/nanoc4-template
     cd nanoc4-template
     bundle install
-    bower install
     bundle exec nanoc
     bundle exec nanoc view
 
@@ -71,11 +48,30 @@ Point your browser to `http://localhost:3000`.
 
 ## Customization
 
-Modify the site's metadata and deployment settings in `nanoc.yaml`. Edit or
-replace `content/index.erb`. You may also want to remove
-`content/blog/posts/examples`. You may delete the whole `content/blog` and
-`layouts/blog` folders if you do not need a blog. You should also change the
-favicon (`content/assets/images/favicon.png`).
+1. Edit the “Deployment” and “Site-specific metadata” sections in `nanoc.yaml`.
+2. Edit or replace `content/index.erb`.
+3. Delete `content/blog/posts/examples`. You may delete the whole `content/blog`
+   and `layouts/blog` folders if you do not need a blog.
+4. If you do not plan to use Compass, you may delete `compass_config.rb`. Do not
+   forget to update the corresponding compilation rule in `Rules`, too (search
+   for `filter :compass`).
+5. Change the favicon (`content/assets/images/favicon.png`).
+6. Put JavaScript scripts into `content/assets/scripts`. If you want to
+   aggregate scripts, put them somewhere inside the `components` folder instead,
+   and add their path to the array in `main.js.erb`.
+7. Put (S)CSS files in `content/assets/stylesheets`. If you use Compass,
+   additional paths to stylesheets may be added in `compass_config.rb`. Files
+   whose name starts with an underscore are not copied to the output: you may
+   import them in `main.scss` to get a single aggregated CSS file in the output.
+8. Put additional components, libraries or frameworks into
+   `content/assets/components`. Update `all.js.erb` and `main.scss` to include
+   the necessary files.
+
+
+## Editing content
+
+The site's content goes into the `content` folder. Blog posts go anywhere
+under `blog/posts`.
 
 In the frontmatter of any item, you may use the variables `head`, `beginbody`,
 and `endbody` to load additional partials, just before the `</head>` tag, just
@@ -94,57 +90,6 @@ Each variable takes a list of names of partials, which must exist inside
 for a bunch of pages having the same structure, it is better to define a custom
 layout.
 
-You may put JavaScript scripts in `content/assets/scripts`. If you want to
-aggregate scripts, include them in `content/assets/scripts/all.js.erb` using
-`File.read`. You may put (S)CSS files in `content/assets/stylesheets`. To
-aggregate (S)CSS files, import them in `content/assets/stylesheets/main.scss`.
-
-[Compass](http://compass-style.org) configuration is in `compass_config.rb`. If
-you don't use Compass, feel free to delete `compass_config.rb` and `lib/compass.rb`.
-
-To build a production version of your site, delete the `tmp` folder and set the
-`NANOC_ENV` environment variable:
-
-    NANOC_ENV=production bundle exec nanoc
-
-
-### Using Foundation
-
-By default, this template uses [Zurb Foundation](http://foundation.zurb.com).
-You may override Foundation's default settings by editing
-`assets/stylesheets/foundation/_foundation_overrides.scss`. You may choose which
-Foundation components to use in `_app.scss`. You may put your own styles in
-`_custom.scss`.
-
-
-### Using Bootstrap
-
-If you want to use [Bootstrap](http://getbootstrap.com) instead, edit
-`main.scss`, comment out the line
-
-    @import "foundation/app";
-
-and uncomment
-
-    @import "bootstrap/styles";
-
-Then, edit `content/assets/scripts/all.js.erb` and replace
-
-    <%= File.read('content/assets/components/foundation/js/foundation.js') %>
-    $(document).foundation();
-
-with
-
-    <%= File.read('content/assets/components/bootstrap-sass/assets/javascripts/bootstrap.js') %>
-
-You may override Bootstrap variables and choose which Bootstrap components to
-use by modifying the corresponding files in
-`content/assets/stylesheets/bootstrap`. You may define your own styles in
-`content/assets/stylesheets/bootstrap/_custom.scss`.
-
-
-### Placeholder content
-
 The file `lib/helpers/lorem.rb` contains a few functions to put placeholder text
 and images for quick prototyping. For example:
 
@@ -157,67 +102,16 @@ and images for quick prototyping. For example:
 Refer to the source code for a complete list and to the sample code for some
 examples of usage.
 
-### How to deploy to Github Pages
 
-These instructions assume that you have created a `gh-pages` branch in your repo
-on Github as per Github documentation.
+## Deploying your site
+
+To build a production version of your site, delete the `tmp` folder and set the
+`NANOC_ENV` environment variable:
+
+    NANOC_ENV=production bundle exec nanoc
+
+This template is configured to deploy your site on GitHub Pages. See [Deploying
+Nanoc sites](http://nanoc.ws/doc/deploying/) for the details.
 
 **Note:** in order for links to work properly on Github pages, you may need to
-apply Nanoc's `:relativize_paths` filter to the generated content (see the
-`Rules` in the [`sample-site`
-branch](https://github.com/lifepillar/nanoc4-template/tree/sample-site) for an
-example).
-
-#### Setup
-
-The following steps must be executed every time you purge and/or delete the
-`public` folder:
-
-1. Build your web site at least once to create the `public` folder.
-
-2. Initialize a Git repo in the `public` folder:
-
-        cd public && git init
-
-3. Set the origin of the public repo to point to your remote repository on
-   Github (where your web site is hosted):
-
-        git remote add origin <URI>
-
-   Note that this origin is totally independent of the origin of your project's repo
-   (it may be the same or be different).
-
-4. Create a local `gh-pages` branch in the public repo:
-
-        git checkout -b gh-pages
-
-5. Create at least one commit in the `gh-pages` branch:
-
-        git add -A
-        git commit -m "Initial commit."
-
-
-#### Publishing
-
-The following commands should be executed in your project's root folder every time
-you want to deploy a new version of your site:
-
-1. Remove the `tmp` folder (optional but recommended):
-
-        rm -fr tmp
-
-2. Build a production version of your site:
-
-        NANOC_ENV=production bundle exec nanoc
-
-3. (Optional, but recommended) Perform checks and preview your site:
-
-        bundle exec nanoc check --all
-        bundle exec nanoc view
-
-4. Deploy to Github pages (this assumes the default configuration of this
-  template):
-
-        bundle exec nanoc deploy -n
-        bundle exec nanoc deploy
-
+apply Nanoc's `:relativize_paths` filter to the generated content.
