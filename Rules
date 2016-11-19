@@ -5,7 +5,7 @@ require 'date'
 preprocess do
   @config[:production] = !ENV['NANOC_ENV'].nil? && ENV['NANOC_ENV'] == 'production' # See https://github.com/nanoc/nanoc/issues/487
 
-  # See: http://nanoc.ws/docs/api/Nanoc/Helpers/Blogging.html
+  # See: http://nanoc.ws/doc/reference/helpers/#blogging
   # Assume all items inside /blog are blog articles unless otherwise specified.
   @items.select { |item| item.identifier.to_s =~ %r{^/blog/posts/.+} }.each do |item|
     item[:kind] ||= 'article' # Required by Nanoc::Helpers::Blogging
