@@ -1,5 +1,5 @@
-<% # Add the scripts you want to include here: %>
-<% for js in ['jquery.js'] %>
-<%=   File.read(js) if File.readable?(js) %>
+<% # Add the scripts you need to this array: %>
+<% for js in ['jquery/dist/jquery.min.js'] %>
+  <%= File.read(File.join('content', 'assets', 'components', js)) if File.readable?(js) %>
 <% end %>
 <% # Add any JavaScript initialization here %>
