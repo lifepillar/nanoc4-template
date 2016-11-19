@@ -5,7 +5,7 @@ This is a starting point for a web site built with [Nanoc 4](http://nanoc.ws/).
 Features:
 
 - extends Nanoc helpers and provides templates to **fully support blogs**,
-  including feeds, archives, tags, etc…
+  including feeds, archives, and tags.
 - works with [Compass](http://compass-style.org) out of the box;
 - builds development/production version of your site;
 - aggregates JavaScript and CSS files, and minifies JavaScript, CSS and HTML;
@@ -27,7 +27,7 @@ With this template, you may:
 
 ## Requirements
 
-- [Nanoc](http://nanoc) 4.4.0 or later.
+- [Nanoc](http://nanoc.ws) 4.4.0 or later.
 
 Optional:
 
