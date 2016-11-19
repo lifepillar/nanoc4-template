@@ -1,9 +1,10 @@
 require 'compass/import-once/activate'
 # Require any additional compass plugins here.
 
-add_import_path "content/assets/components/foundation/scss"
-add_import_path "content/assets/components/bootstrap-sass/assets/stylesheets"
-add_import_path "content/assets/components/fontawesome/scss"
+# Examples:
+# add_import_path "content/assets/components/foundation/bower_components/foundation-sites/scss"
+# add_import_path "content/assets/components/bootstrap-sass/assets/stylesheets"
+# add_import_path "content/assets/components/fontawesome/scss"
 
 http_path             = "/"
 project_path          = File.expand_path(File.dirname(__FILE__))

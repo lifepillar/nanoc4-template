@@ -1,5 +1,5 @@
-<%= File.read('content/assets/components/jquery/dist/jquery.js') %>
-<%= File.read('content/assets/components/fastclick/lib/fastclick.js') %>
-<%= File.read('content/assets/components/foundation/js/foundation.js') %>
-$(document).foundation();
-
+<% # Add the scripts you want to include here: %>
+<% for js in ['jquery.js'] %>
+<%=   File.read(js) if File.readable?(js) %>
+<% end %>
+<% # Add any JavaScript initialization here %>
