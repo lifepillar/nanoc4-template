@@ -59,16 +59,16 @@ Point your browser to `http://localhost:3000`.
    for `filter :compass`).
 5. Replace the favicon (`content/assets/images/favicon.png`).
 6. Put JavaScript scripts into `content/assets/scripts`. If you want to
-   aggregate some scripts, put them somewhere inside `content/assets/component`
-   instead, and add their path to the array in `all.js.erb`.
+   aggregate some scripts, put them somewhere inside `content/assets/components`
+   instead, and add their paths to the array in `all.js.erb`.
 7. Put (S)CSS files in `content/assets/stylesheets`. If you use Compass,
-   additional paths to stylesheets may be added in `compass_config.rb`. Files
+   additional paths to stylesheets may be specified in `compass_config.rb`. Files
    whose name starts with an underscore are not copied to the output: you may
    import them in `main.scss` to get a single aggregated CSS file in the output.
 8. Put additional components, libraries or frameworks into
    `content/assets/components`. Update `compass_config.rb`, `all.js.erb` and
    `main.scss` to include the necessary files. If you need to copy stuff into
-   your web site, define suitable routing rules in `Rules`.
+   your web site (e.g., fonts), define suitable routing rules in `Rules`.
 
 
 ## Editing content
@@ -121,5 +121,5 @@ Nanoc provides the `:yui_compressor` filter).
 This template is configured to deploy your site on GitHub Pages. See [Deploying
 Nanoc sites](http://nanoc.ws/doc/deploying/) for further details.
 
-**Note:** depending on how you have configured your `base_url`, you may need to
-apply Nanoc's `:relativize_paths` filter to the generated content.
+**Note:** you may need to apply Nanoc's `:relativize_paths` filter to the
+generated content.
