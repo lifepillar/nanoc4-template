@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <id>http://localhost:3000/</id>
+  <id>http://lifepillar.me/nanoc4-template//</id>
   <title>My Blog Feed</title>
   <updated>2014-04-25T16:07:03Z</updated>
-  <link rel="alternate" href="http://localhost:3000/">
-  <link rel="self" href="http://localhost:3000/blog/feed.xml">
+  <link rel="alternate" href="http://lifepillar.me/nanoc4-template//">
+  <link rel="self" href="http://lifepillar.me/nanoc4-template//blog/feed.xml">
   <author>
     <name>Blog Author</name>
     <uri>http://site.url.com</uri>
   </author>
   <entry>
-    <id>tag:localhost:3000,2014-04-25:/blog/2014/4/25/multimarkdown-post/</id>
+    <id>tag:lifepillar.me,2014-04-25:/nanoc4-template//blog/2014/4/25/multimarkdown-post/</id>
     <title type="html">Post from MultiMarkdown</title>
     <published>2014-04-25T16:07:03Z</published>
     <updated>2014-04-25T16:07:03Z</updated>
-    <link rel="alternate" href="http://localhost:3000/blog/2014/4/25/multimarkdown-post/">
+    <link rel="alternate" href="http://lifepillar.me/nanoc4-template//blog/2014/4/25/multimarkdown-post/">
     <content type="html">&lt;p&gt;The source code of this post is written in MultiMarkdown.&lt;/p&gt;
 
 &lt;!-- more --&gt;
@@ -100,7 +100,7 @@ View the source code of this post!&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:localhost:3000,2014-03-25:/blog/2014/3/25/simple-post/</id>
+    <id>tag:lifepillar.me,2014-03-25:/nanoc4-template//blog/2014/3/25/simple-post/</id>
     <title type="html">Simple Post</title>
     <published>2014-03-25T12:30:00Z</published>
     <updated>2014-03-25T12:30:00Z</updated>
@@ -108,7 +108,7 @@ View the source code of this post!&lt;/p&gt;
       <name>Myself</name>
       <uri>mailto:lifepillar@lifepillar.me</uri>
     </author>
-    <link rel="alternate" href="http://localhost:3000/blog/2014/3/25/simple-post/">
+    <link rel="alternate" href="http://lifepillar.me/nanoc4-template//blog/2014/3/25/simple-post/">
     <content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus.
 Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec
 consectetur ante hendrerit. Donec et mollis dolor.&lt;/p&gt;
@@ -164,11 +164,11 @@ quis eros. Donec vel.&lt;/p&gt;
 </content>
   </entry>
   <entry>
-    <id>tag:localhost:3000,2014-01-19:/blog/2014/1/19/sample-post/</id>
+    <id>tag:lifepillar.me,2014-01-19:/nanoc4-template//blog/2014/1/19/sample-post/</id>
     <title type="html">Sample Post</title>
     <published>2014-01-19T09:31:00Z</published>
     <updated>2014-01-20T11:45:00Z</updated>
-    <link rel="alternate" href="http://localhost:3000/blog/2014/1/19/sample-post/">
+    <link rel="alternate" href="http://lifepillar.me/nanoc4-template//blog/2014/1/19/sample-post/">
     <content type="html">&lt;p&gt;What follows contains an excerpt from D. Knuth’s &lt;em&gt;The Art of Computer Programming&lt;/em&gt;.&lt;/p&gt;
 
 &lt;p&gt;Algorithm E from Knuth’s book, expressed in Ruby:&lt;/p&gt;
