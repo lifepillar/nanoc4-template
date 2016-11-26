@@ -1,15 +1,10 @@
-<footer id="page-footer" role="contentinfo">
-  <div id="footer-wrapper">
-    <div id="copyright">
-      <p>&copy; Copyright no one at all. Go to town.</p>
-    </div>
+<footer>
+  <div class="copyright">
+    <p>&copy; Copyright no one at all. Go to town.</p>
+  </div>
 
-    <div id="social-links">
-      <ul>
-        <li><a href="<%= @config[:github_url] %>" class="github"><span class="github"></span></a></li>
-        <li><a href="<%= @config[:twitter_url] %>" class="twitter"><span class="twitter"></span></a></li>
-      </ul>
-    </div>
+  <div class="social">
+    <a href="<%= @config[:github_url] %>" class="github"><span>GitHub</span></a>
+    <a href="<%= @config[:twitter_url] %>" class="twitter"><span>Twitter</span></a>
   </div>
 </footer>
-

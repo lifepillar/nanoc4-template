@@ -81,4 +81,3 @@ module BloggingExtensions
     end
   end
 end # module
-

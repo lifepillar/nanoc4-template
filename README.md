@@ -66,7 +66,8 @@ Point your browser to `http://localhost:3000`.
    import them in `main.scss` to get a single aggregated CSS file in the output.
 8. Put additional components, libraries or frameworks into
    `content/assets/components`. Update `compass_config.rb`, `all.js.erb` and
-   `main.scss` to include the necessary files.
+   `main.scss` to include the necessary files. If you need to copy stuff into
+   your web site, define suitable routing rules in `Rules`.
 
 
 ## Editing content

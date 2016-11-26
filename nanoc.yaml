@@ -88,12 +88,12 @@ deploy:
 
 # Site-specific metadata
 
-base_url: http://nanoc4-template.static.localhost
+base_url: "http://localhost:3000"
 
 site:
-  name: My Site
-  slogan: The slogan goes here
-  author_name: Myself
+  name: Sample Nanoc Site
+  slogan: See <strong><a href="https://github.com/lifepillar/nanoc4-template">Source code</a></strong>
+  author_name: A. U. Thor
 
 blog:
   name: My Blog
@@ -110,7 +110,7 @@ feed:
   author_uri: http://site.url.com
 
 github_url: https://github.com/lifepillar/
-twitter_url: https://twitter.com/lifepillar
+twitter_url: https://twitter.com/lifepillar/
 
 # Settings specific to production environment
 environments:

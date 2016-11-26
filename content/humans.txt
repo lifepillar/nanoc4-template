@@ -12,4 +12,3 @@
     * Disqus
     * Google Analytics
     * MathJax
-

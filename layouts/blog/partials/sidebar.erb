@@ -1,12 +1,15 @@
+<section>
 <h4>Recent Articles</h4>
-<ul class="no-bullet">
+<ul>
   <% sorted_articles[0...10].each do |article| %>
     <li><%= link_to article[:title], article.path %> <span><%= article[:created_at].strftime('%b %e') %></span></li>
   <% end %>
 </ul>
+</section>
 
+<section>
 <h4>Archives</h4>
-<ul class="no-bullet">
+<ul>
   <% sorted_articles.group_by { |a| a[:created_at].year }.each do |year, year_articles| %>
     <li><%= link_to year, "/blog/archives/#{year}" %> (<%= year_articles.size %>)
       <ul class="no-bullet">
@@ -17,11 +20,13 @@
     </li>
   <% end %>
 </ul>
+</section>
 
+<section>
 <h4>Tags</h4>
-<ul class="no-bullet">
+<ul>
   <% @items.select { |item| 'tag-page' == item.fetch(:kind, '') }.sort { |t1, t2| t2[:count] <=> t1[:count] }.each do |item| %>
     <li><%= link_for_tag item[:tag], '/blog/tags/' %> (<%= item[:count] %>)</li>
   <% end %>
 </ul>
-
+</section>

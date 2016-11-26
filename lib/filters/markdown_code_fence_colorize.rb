@@ -5,4 +5,3 @@ class MarkdownCodeFenceColorize < Nanoc::Filter
     content.gsub(/```(?<lang>.+)/, '```language-\k<lang>')
   end
 end
-

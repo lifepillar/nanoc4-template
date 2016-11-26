@@ -78,11 +78,12 @@ end
 
 # Fonts
 
-route '/assets/components/bootstrap-sass/assets/fonts/**/*' do
-  '/fonts/bootstrap/' + File.basename(@item.identifier.to_s)
-end
+# Copy fonts from additional components. For instance:
+# route '/assets/components/fontawesome/fonts/**/*' do
+#  '/fonts/' + File.basename(@item.identifier.to_s)
+#end
 
-route '/assets/components/fontawesome/fonts/**/*' do
+route '/assets/fonts/**/*' do
   '/fonts/' + File.basename(@item.identifier.to_s)
 end
 
@@ -205,4 +206,3 @@ end
 # Filter all layouts through erb
 
 layout '/**/*', :erb
-

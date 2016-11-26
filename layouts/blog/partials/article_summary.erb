@@ -5,8 +5,7 @@
 
   <%= summary(@item) %>
 
-  <p class="readmore"><%= link_to 'Read more &rarr;', @item.path, :class => 'secondary button radius' %></p>
+  <p><%= link_to 'Read more &rarr;', @item.path, :class => 'readmore' %></p>
 
   <%= render '/blog/partials/tags.*' %>
 </article>
-

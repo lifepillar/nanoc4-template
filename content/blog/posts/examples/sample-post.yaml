@@ -7,4 +7,3 @@ tags:       [example, mathematical]
 head:       [pygments,mathjax]
 excerpt:    A sample post, with <em>code</em> and <em>math</em>.
 ---
-

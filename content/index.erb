@@ -1,65 +1,51 @@
-<header id="page-header">
-  <div id="header-wrapper">
-    <div id="title-wrapper">
-      <h1>
-        <span class="logo"></span> <%= @config[:site][:name] %>
-      </h1>
-    </div>
-    <div id="menu-wrapper">
-      <nav>
-        <ul>
-          <li><%= link_to 'Blog', @config[:blog][:url], :class => 'menu-item' %></li>
-          <li><%= link_to 'Link 1', '#', :class => 'menu-item' %></li>
-          <li><%= link_to 'Link 2', '#', :class => 'menu-item' %></li>
-        </ul>
-      </nav>
-    </div>
-    <div id="banner-wrapper">
-      <img src="<%= Lorem.image('1000x400', :text => 'banner img') %>" alt="banner image">
-    </div>
-  </div>
+<header class="home">
+  <h1>
+    <%= @config[:site][:name] %>
+  </h1>
+  <p class="slogan"><%= @config[:site][:slogan] %></p>
+  <nav>
+    <ul>
+      <li><%= link_to 'Blog', @config[:blog][:url], :title => 'Blog',   :rel => 'nofollow' %></li>
+      <li><%= link_to 'Link 1', '#',                :title => 'Link 1', :rel => 'nofollow' %></li>
+      <li><%= link_to 'Link 2', '#',                :title => 'Link 2', :rel => 'nofollow' %></li>
+    </ul>
+  </nav>
 </header>
 
 <main role="main">
 
-  <section id="about">
-    <div id="about-wrapper">
-      <div id="info">
-        <h2>About</h2>
-        <p><%= Lorem.paragraph %></p>
-      </div>
-      <div id="photo">
-        <img src="<%= Lorem.image('400x300', :text => 'photo') %>" alt="photo">
-      </div>
+  <section class="about">
+    <div>
+      <h2>About</h2>
+      <p><%= Lorem.paragraph %></p>
+    </div>
+    <div>
+      <img src="/images/img300x200.png" alt="photo">
     </div>
   </section>
 
-  <section id="work">
-    <div id="work-wrapper">
-      <div id="tagline">
-        <h2>Work</h2>
-        <p><%= Lorem.words 15 %></p>
-      </div>
-      <div class="work-img">
-        <img src="<%= Lorem.image('400x300', :text => 'img1') %>" alt="img1">
-        <p class="work-description">Description</p>
-      </div>
-      <div class="work-img">
-        <img src="<%= Lorem.image('400x300', :text => 'img2') %>" alt="img2">
-        <p class="work-description">Description</p>
-      </div>
-      <div class="work-img">
-        <img src="<%= Lorem.image('400x300', :text => 'img3') %>" alt="img3">
-        <p class="work-description">Description</p>
-      </div>
-      <div class="work-img">
-        <img src="<%= Lorem.image('400x300', :text => 'img4') %>" alt="img4">
-        <p class="work-description">Description</p>
-      </div>
+  <section class="work">
+    <div class="tagline" role="article">
+      <h2>Work</h2>
+      <p><%= Lorem.words 30 %></p>
+    </div>
+    <div class="work-img">
+      <img src="/images/img300x200.png" alt="img">
+      <p class="work-description">Description</p>
+    </div>
+    <div class="work-img">
+      <img src="/images/img300x200.png" alt="img2">
+      <p class="work-description">Description</p>
+    </div>
+    <div class="work-img">
+      <img src="/images/img300x200.png" alt="img3">
+      <p class="work-description">Description</p>
+    </div>
+    <div class="work-img">
+      <img src="/images/img300x200.png" alt="img4">
+      <p class="work-description">Description</p>
     </div>
   </section>
-
 </main>
 
 <%= render '/partials/footer.*' %>
-

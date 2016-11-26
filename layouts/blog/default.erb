@@ -1,40 +1,28 @@
 <% render '/default.*' do %>
-  <header id="page-header">
-    <div id="blog-header-wrapper">
-      <div id="title-wrapper">
-        <h1>
-          <%= @config[:blog][:name] %> <small><%= @config[:blog][:slogan] %></small>
-        </h1>
-      </div>
-      <div id="menu-wrapper">
-        <nav>
-          <ul>
-            <li><%= link_to @config[:site][:name], '/', :class => 'menu-item' %></li>
-            <li><%= link_to 'Link 1', '#', :class => 'menu-item' %></li>
-            <li><%= link_to 'Link 2', '#', :class => 'menu-item' %></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="feed">
-        <a href="/blog/feed.xml"><span class="feed"></span></a>
-      </div>
-    </div>
+  <header class="blog">
+    <h1>
+      <%= @config[:blog][:name] %>
+    </h1>
+    <p><%= @config[:blog][:slogan] %></p>
+    <nav>
+      <ul>
+        <li><%= link_to @config[:site][:name], '/',   :title => @config[:site][:name],   :rel => 'nofollow' %></li>
+        <li><%= link_to 'Link 1', '#',                :title => 'Link 1',                :rel => 'nofollow' %></li>
+        <li><%= link_to 'Link 2', '#',                :title => 'Link 2',                :rel => 'nofollow' %></li>
+      </ul>
+    </nav>
+    <a href="/blog/feed.xml" class="feed"><span>Feed</span></a>
   </header>
 
-  <div id="blog-content-wrapper">
-    <div id="post-summaries">
-      <main role="main">
-      <%= yield %>
-      </main>
-    </div>
+  <div class="blog-wrapper">
+    <aside>
+      <%= render '/blog/partials/sidebar.*' %>
+    </aside>
 
-    <div id="blog-index">
-      <aside>
-        <%= render '/blog/partials/sidebar.*' %>
-      </aside>
-    </div>
+    <main role="main">
+    <%= yield %>
+    </main>
   </div>
 
   <%= render '/partials/footer.*' %>
 <% end %>
-
