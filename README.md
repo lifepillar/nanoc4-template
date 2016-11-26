@@ -1,6 +1,8 @@
 # Nanoc 4 Template
 
-This is a starting point for a web site built with [Nanoc 4](http://nanoc.ws/).
+This is a starting point for a [web
+site](http://lifepillar.github.com/nanoc4-template/) built with [Nanoc
+4](http://nanoc.ws/).
 
 Features:
 
@@ -45,7 +47,6 @@ Optional:
     bundle exec nanoc view
 
 Point your browser to `http://localhost:3000`.
-
 
 ## Customization
 
