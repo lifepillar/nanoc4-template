@@ -10,6 +10,7 @@ gem 'nanoc',          '>=4.4.0' # Nanoc 4
 gem 'nanoc-git',      '>=1.0.1' # Git deployer
 gem 'nanoc-external', '>=1.0.1' # :external filter
 gem 'pry'                       # For nanoc shell
+gem 'pry-coolline'              # To use pry even if Ruby does not have readline support
 gem 'pygmentize'                # For syntax coloring
 gem 'uglifier'                  # For :uglify_js filter
 gem 'w3c_validators'            # For nanoc check
