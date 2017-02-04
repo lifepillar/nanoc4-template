@@ -29,7 +29,7 @@ With this template, you may:
 
 ## Requirements
 
-- [Nanoc](http://nanoc.ws) 4.4.0 or later.
+- [Nanoc](http://nanoc.ws) 4.5.0 or later.
 
 Optional:
 
