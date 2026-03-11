@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **As of March 11, 2026, this repository is on [Codeberg](https://codeberg.org/lifepillar/nanoc4-template).**
+
 # Nanoc 4 Template
 
 This is a starting point for a [web
